@@ -9,22 +9,56 @@
 
     body {
       background-color: black;
+    /*Intro Styling*/
     }
     #intro {
       font-size: 800%;
-      margin-top: auto;
-      margin-bottom: auto;
+      margin-top: 100px;
+      margin-bottom: 10px;
       margin-left: auto;
       margin-right: auto;
       color: white;
       text-align: center;
     }
+
+    #introClick {
+      background-color: grey;
+      border-radius: 30px;
+      color: white;
+      margin-top: 100px;
+      margin-left: 40%;
+      top: 50%;
+      height: 120px;
+      width: 350px;
+      font-size: 500%;
+      text-align: center;
+
+    }
+
+    #msgbox {
+    display: none;
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px;
+    background: #dddddd;
+    width: 300px;
+    border-radius: 25px;
+    margin-left: 35%;
+    margin-top: 25%;
+}
+
+
+    /*#introClick*/
+
     </style>
   </head>
   <body>
     <script src="jquery-1.11.3.js"></script>
-    <div id ="intro">text</div>
+    <div id ="intro"> </div>
+    <!-- <div id ="introclick">Click!</div> -->
+    <input id ="introClick" type="button" value="Click!">
     <script src="intro.js"></script>
+    <div id= "msgbox">Hello! This is your message box!</div>
+    <section id="midgame">
     <p> ButtonClicker </p>
 
 
@@ -34,6 +68,6 @@
     <br>
     food: <div id ="food">0</div> wood: <div id ="wood">0</div> minerals: <div id ="mineral">0</div>
     workers: <div id="workers">0</div>
-
+  </section>
   </body>
 </html>
