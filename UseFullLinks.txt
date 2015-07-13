@@ -1,0 +1,3 @@
+Usefull Links:
+//for color gradients in CSS
+http://www.colorzilla.com/gradient-editor/

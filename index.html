@@ -5,18 +5,47 @@
     <title>
       Click!
     </title>
+    <!-- testing!! -->
     <script> console.log("Done");</script>
-
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <p> ButtonClicker </p>
-    <!-- <input type="button" onclick="done(food)" value ="button"/>
-    <input type="button" onclick="done(wood)" value ="button"/>
-    <input type="button" onclick="done(minerals)" value ="button"/> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- User Location -->
+    <p id="status">You are in <span id="location" title ="Your location">the forrest.</span></p>
+    <!-- First Exploration -->
+    <div id="exp">
+      <button id= "lookAround">Explore Forest</button>
+    </div>
+    <!-- Basic Resources -->
+    <div id="levelOne">
+      <button id= "berryButton" type="button">Pick Berries</button>
+      <button id= "woodButton" type="button">Gather wood</button>
+      <button id= "stoneButton" type="button">Mine stone</button>
+    </div>
+    <!-- Content Script -->
     <script src="script.js"></script>
+
+    <!-- Story Line -->
+    <script src="story.js"></script>
     <br>
-    <br>
-    food: <div id ="food">0</div> wood: <div id ="wood">0</div> minerals: <div id ="mineral">0</div>
-    workers: <div id="workers">0</div>
+    <!-- Resource Display -->
+    <div id="basic">
+      <span id = "footTxt">Berries: <div id ="food">0</div>
+      <span id = "woodTxt">Wood: <div id ="wood">0</div>
+      <span id = "stoneTxt">Stone: <div id ="mineral">0</div>
+      <span id = "axesTxt">Axes: <div id="axes">0</div>
+      <span id = "workersTxt">Workers: <div id="workers">0</div>
+    </div>
+    <div id="msgBox">
+      <div id="msgBoxHead">Message Box
+      </div>
+      <div id="msgBoxContent">
+        "Where - where am I?!"
+      </div>
+    </div>
+
+    </div>
   </body>
 </html>

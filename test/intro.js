@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 $("#msgbox").hide();
 start();
 function start(){
@@ -16,6 +17,22 @@ function stepOne(){
     $('#intro').html("But then there was a single...");
     $("#intro").fadeIn(4000);
     setTimeout(function(){ a() }, 6000);
+=======
+// document.getElementById("intro").style.color = "white";
+console.log("start");
+$("#intro").hide();
+$("#intro").html("In the beginning there was nothing.");
+ console.log("fadein");
+$("#intro").fadeIn(500);
+console.log("fade done");
+$("#intro").fadeOut(500);
+setTimeout(function(){ stepOne() }, 1000);
+
+function stepOne(){
+    $('#intro').html("But then there was a single Click!");
+    $("#intro").fadeIn(500);
+    setTimeout(function(){ a() }, 500);
+>>>>>>> c69837467029b46de406ae9bda20e025715dffeb
 
 
 }
