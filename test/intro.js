@@ -3,15 +3,15 @@ console.log("start");
 $("#intro").hide();
 $("#intro").html("In the beginning there was nothing.");
  console.log("fadein");
-$("#intro").fadeIn(6000);
+$("#intro").fadeIn(500);
 console.log("fade done");
-$("#intro").fadeOut(4000);
-setTimeout(function(){ stepOne() }, 10000);
+$("#intro").fadeOut(500);
+setTimeout(function(){ stepOne() }, 1000);
 
 function stepOne(){
     $('#intro').html("But then there was a single Click!");
-    $("#intro").fadeIn(6000);
-    setTimeout(function(){ a() }, 6000);
+    $("#intro").fadeIn(500);
+    setTimeout(function(){ a() }, 500);
 
 }
 function a(){

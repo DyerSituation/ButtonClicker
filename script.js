@@ -1,82 +1,90 @@
-// var food = 0;
-// var minerals = 0;
-// var wood = 0;
-// function done(method){
-//   console.log(method);
-//   method();
-//   console.log("1");
-// }
-//
-// function food(){
-//   console.log("2");
-// }
-var foods = 0;
-var woods = 0;
-var minerals = 0;
-var workers = 0;
-var numbah = 5000;
-var FoodButton = document.createElement('input');
-FoodButton.type = "button";
-FoodButton.addEventListener('click', function(){    done(food);});
-FoodButton.setAttribute("value", "Food");
-document.body.appendChild(FoodButton);
+// Erik Dyer
 
-var WoodButton = document.createElement('input');
-WoodButton.type = "button";
-WoodButton.addEventListener('click', function(){    done(wood);});
-WoodButton.setAttribute("value", "Wood");
-document.body.appendChild(WoodButton);
+//Initiate resources to 0
+var currentBerries = 0; 
+var currentWoods = 0;
+var currentMinerals = 0;
+var currentWorkers = 0;
+var currentAxes = 0; 
 
-var MineralButton = document.createElement('input');
-MineralButton.type = "button";
-MineralButton.addEventListener('click', function(){    done(mineral);});
-MineralButton.setAttribute("value", "Minerals");
-document.body.appendChild(MineralButton);
+//worker productivity interval
+var workerIncrement = 2000;
 
-function done(method){  method();
+//basic resource buttons
+$("#berryButton").click(function(){    increase(food);});
+$("#woodButton").click(function(){    increase(wood);});
+$("#stoneButton").click(function(){    increase(mineral);});
+
+//"Increase" method used to increment resources
+function increase(method){  console.log(method);
+  method();
 }
+//basic resource incrementation
 function food(){
-  foods++;
-  document.getElementById("food").innerHTML = foods;
+  currentBerries++;
+  document.getElementById("food").innerHTML = currentBerries;
 }
-
 function wood(){
-  woods++;
-  document.getElementById("wood").innerHTML = woods;
+  currentWoods++;
+  document.getElementById("wood").innerHTML = currentWoods;
 }
-
 function mineral(){
-  minerals++;
-  document.getElementById("mineral").innerHTML = minerals;
+  currentMinerals++;
+  document.getElementById("mineral").innerHTML = currentMinerals;
 }
 
-var WorkerButton = document.createElement('input');
-WorkerButton.type = "button";
-WorkerButton.addEventListener('click', function(){    worker();});
-WorkerButton.setAttribute("value", "Craft Worker");
-document.body.appendChild(WorkerButton);
+//updates basic resource count on screen
+function updateBasic(){
+  document.getElementById("food").innerHTML = currentBerries;
+  document.getElementById("wood").innerHTML = currentWoods;
+  document.getElementById("mineral").innerHTML = currentMinerals;
+}
 
-function worker(){
-  if (foods >= 20 && minerals >= 20 && woods >= 20){
-  foods = foods - 20;
-  minerals = minerals -20;
-  woods = woods - 20;
-  workers++;
-  document.getElementById("food").innerHTML = foods;
-  document.getElementById("wood").innerHTML = woods;
-  document.getElementById("mineral").innerHTML = minerals;
-  document.getElementById("workers").innerHTML = workers;
+// var MineralButton = document.createElement('input');
+// MineralButton.type = "button";
+// MineralButton.addEventListener('click', function(){    increase(axe);});
+// MineralButton.setAttribute("value", "Craft Axe");
+// document.body.appendChild(MineralButton);
+// var WorkerButton = document.createElement('input');
+// WorkerButton.type = "button";
+// WorkerButton.addEventListener('click', function(){    increase(worker);});
+// WorkerButton.setAttribute("value", "Craft Worker");
+// WorkerButton.setAttribute("id", "WorkerBttn")
+// document.body.appendChild(WorkerButton);
+function axe(){
+  if (currentBerries >= 5 && currentMinerals >= 25 && currentWoods >= 75){
+  currentBerries = currentBerries - 5;
+  currentMinerals = currentMinerals -25;
+  currentWoods = currentWoods - 75;
+  currentAxes++;
+  updateBasic();
+  document.getElementById("currentAxes").innerHTML = currentAxes;
   }
 }
+
+
+
+
+
+function worker(){
+  if (currentBerries >= 20 && currentMinerals >= 20 && currentWoods >= 20){
+  currentBerries = currentBerries - 20;
+  currentMinerals = currentMinerals -20;
+  currentWoods = currentWoods - 20;
+  currentWorkers++;
+  updateBasic();
+  document.getElementById("currentWorkers").innerHTML = currentWorkers;
+  }
+}
+
 var that = this;
-setInterval(function(){increment(that.workers)}, numbah);
+setInterval(function(){increment(that.currentWorkers)}, workerIncrement);
 
 function increment(num){
   console.log(num);
-  foods = foods + num;
-  woods = woods + num;
-  minerals = minerals + num;
-  document.getElementById("food").innerHTML = foods;
-  document.getElementById("wood").innerHTML = woods;
-  document.getElementById("mineral").innerHTML = minerals;
+  currentBerries = currentBerries + num;
+  currentWoods = currentWoods + num;
+  currentMinerals = currentMinerals + num;
+  updateBasic();
 }
+

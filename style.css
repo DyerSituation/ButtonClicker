@@ -1,0 +1,33 @@
+#basic{
+	border: 2px solid #a1a1a1;
+	width: 50px;
+	padding: 10px 20px; 
+	margin-top: 10px;
+	margin-left: 5px;
+	border-radius: 10px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1)));
+	text-align: center;
+    }
+#berryButton, #woodButton, #stoneButton, #lookAround, #basic, #msgBox{
+	display: none;
+}
+
+#msgBox {
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px; 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(241,241,241,1)), color-stop(51%,rgba(225,225,225,1)), color-stop(100%,rgba(246,246,246,1)));
+    width: 300px;
+    border-radius: 25px;
+}
+
+#msgBoxHead{
+	font-family: "Lucida Console", Monaco, monospace;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+#msgBoxContent{
+	font-size: 18px;
+	text-align: center;
+	padding-bottom: 10px;
+}
