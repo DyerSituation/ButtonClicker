@@ -10,7 +10,7 @@ var stone = false;
 
 
 $( window ).load(function() { show(); })
-//first message
+//first message.
 function show(){
 	$('#msgBox').fadeIn(2000);
 	setTimeout(function(){ intros();}, 3000)
@@ -20,20 +20,20 @@ function intros(){
 	$("#lookAround").fadeIn(500);
 	$("#lookAround").click(function(){ updates();})
 }
-//different messages from exploring the game
+//Introduction sequence of events
 function updates(){
 	switch (updateNumber++) {
     case 0:
-				txtToScreen("There are tall, dark trees everywhere...", "Walk Around");
+				introSequence("There are tall, dark trees everywhere...", "Walk Around");
         break;
     case 1:
-				txtToScreen("Woods as far as the eye can see...", "Keep Walking");
+				introSequence("Woods as far as the eye can see...", "Keep Walking");
         break;
     case 2:
-				txtToScreen("Oh, this bush has some blue berries on it!", "Eat a Berry");
+				introSequence("Oh, this bush has some blue berries on it!", "Eat a Berry");
         break;
     case 3:
-				txtToScreen("Ack! They're poisonous! I'm dying!!", 'Accept Death');
+				introSequence("Ack! They're poisonous! I'm dying!!", 'Accept Death');
         break;
     case 4:
 				$("#lookAround").prop("disabled", true);
@@ -43,7 +43,8 @@ function updates(){
         break;
 			}
 }
-function txtToScreen(content, button){
+//Used as a part of the introduction.
+function introSequence(content, button){
 	$("#lookAround").prop("disabled", true);
 	$("#msgBoxContent").html(content);
 	$("#lookAround").html(button);
@@ -66,17 +67,21 @@ function startGame(){
 
 function randomEvent(eventNumber){
 	console.log(eventNumber);
-	if (eventNumber < 1){
-		// string = "You befriended a random " + randomAnimal() +"!";
-		// eventText(string);
-		if(!stone)
+	if (eventNumber < .04){
+		if(!stone){
 			string = "You tripped and fell into a... crater?! "
 			$("#msgBoxContent").html(string);
 			$("#lookAround").html("Ouch!!");
 			$("#lookAround").click(function(){discoverStone();});
+			stone = true;
+		}
+		else {
+			string = "\"There's a huge rusted structure sticking out ot the ground. I wonder what it used to be.... \"";
+			eventText(string);
+		}
 	}
-	else if (eventNumber >= .33 && eventNumber < .67){
-		if (eventNumber < .49){
+	else if (eventNumber >= .04 && eventNumber < .2){
+		if (eventNumber < .12){
 			plant = "bush "
 			prep = "behind ";
 		}
@@ -84,32 +89,42 @@ function randomEvent(eventNumber){
 			plant = "tree "
 			prep = "in "
 		}
-		string = "That " + plant +  "just rustled! I wonder what's " + prep + "it...";
+		string = "\"That " + plant +  "just rustled! I wonder what's " + prep + "it...\"";
 		eventText(string);
 	}
-	else if (eventNumber >= .67 && eventNumber < 1){
+	else if (eventNumber >= .2 && eventNumber < .35){
 		string = "You found some " + randomAnimal() + " tracks.";
 		eventText(string);
 	}
-	else if (eventNumber >= .67 && eventNumber < 1){
-		string = "..zzZ";
+	else if (eventNumber >= .35 && eventNumber < .43){
+		string = "\"..ZZZzzzzz\"";
 		eventText(string);
 	}
-	else if (eventNumber >= .67 && eventNumber < 1){
+	else if (eventNumber >= .43 && eventNumber < .53){
 		string = "You had a very introspective discussion on self identity with the local owl.";
 		eventText(string);
 	}
-	else if (eventNumber >= .67 && eventNumber < 1){
-		if(!stone)
-			string = "You tripped and fell into a... crater?! "
-			$("#msgBoxContent").html(string);
-			$("#lookAround").html("Ouch!!")
-			$("#lookAround").click(function(){discoverStone();});
-
-
+	else if (eventNumber >= .53 && eventNumber < .7){
+		string = "You befriended a random " + randomAnimal() +"!";
+		eventText(string);
+	}
+	else if (eventNumber >= .7 && eventNumber < .85){
+		string = '\"What\'s this covered in vines? I think people used to live in it!\"';
+		eventText(string);
+	}
+	else if (eventNumber >= .65 && eventNumber < 1){
+		findGuide();
+	}
+	else if (eventNumber >= .8 && eventNumber < 1){
+		string = '\"Achoo!\"';
+		eventText(string);
+	}
+	else if (eventNumber >= .8 && eventNumber < 1){
+		string = '\"What\'s this covered in vines? I think people used to live in it!\"';
+		eventText(string);
 	}
 }
-
+//Introduces stone button.
 function discoverStone(){
 	string = "Hey, It's an abandoned rock query!";
 	$("#msgBoxContent").html(string);
@@ -120,6 +135,14 @@ function discoverStone(){
 	$("#lookAround").click(function(){ randomEvent(Math.random());});
 }
 
+function findGuide(){
+	string = "It's a Journal!";
+	$("#msgBoxContent").html(string);
+	$("#stoneButton").fadeIn(1000);
+	$("#lookAround").html("Keep Exploring");
+	$("#lookAround").click(function(){ randomEvent(Math.random());});
+}
+//Random animals and their probabilities of appearing.
 function randomAnimal(){
 	var num = Math.random();
 	if( num < .2){
