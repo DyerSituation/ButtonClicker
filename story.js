@@ -66,12 +66,13 @@ function startGame(){
 }
 
 function randomEvent(eventNumber){
-	console.log(eventNumber);
-	if (eventNumber < .04){
+	console.log("eventNumber");
+	if (eventNumber < .03){
 		if(!stone){
 			string = "You tripped and fell into a... crater?! "
 			$("#msgBoxContent").html(string);
 			$("#lookAround").html("Ouch!!");
+			// $("#lookAround").attr("onclick","new_function_name()");
 			$("#lookAround").click(function(){discoverStone();});
 			stone = true;
 		}
@@ -79,8 +80,8 @@ function randomEvent(eventNumber){
 			string = "\"There's a huge rusted structure sticking out ot the ground. I wonder what it used to be.... \"";
 			eventText(string);
 		}
-	}
-	else if (eventNumber >= .04 && eventNumber < .2){
+	 }
+	else if (eventNumber >= .03 && eventNumber < .35){
 		if (eventNumber < .12){
 			plant = "bush "
 			prep = "behind ";
@@ -92,35 +93,42 @@ function randomEvent(eventNumber){
 		string = "\"That " + plant +  "just rustled! I wonder what's " + prep + "it...\"";
 		eventText(string);
 	}
-	else if (eventNumber >= .2 && eventNumber < .35){
+	else if (eventNumber >= .35 && eventNumber < .5){
 		string = "You found some " + randomAnimal() + " tracks.";
 		eventText(string);
 	}
-	else if (eventNumber >= .35 && eventNumber < .43){
+	else if (eventNumber >= .5 && eventNumber < .53){
 		string = "\"..ZZZzzzzz\"";
 		eventText(string);
 	}
-	else if (eventNumber >= .43 && eventNumber < .53){
+	else if (eventNumber >= .53 && eventNumber < .58){
 		string = "You had a very introspective discussion on self identity with the local owl.";
 		eventText(string);
 	}
-	else if (eventNumber >= .53 && eventNumber < .7){
+	else if (eventNumber >= .58 && eventNumber < .75){
 		string = "You befriended a random " + randomAnimal() +"!";
 		eventText(string);
 	}
-	else if (eventNumber >= .7 && eventNumber < .85){
+	else if (eventNumber >= .75 && eventNumber < .8){
 		string = '\"What\'s this covered in vines? I think people used to live in it!\"';
 		eventText(string);
 	}
-	else if (eventNumber >= .65 && eventNumber < 1){
+	else if (eventNumber >= .8 && eventNumber < .83){
 		findGuide();
 	}
-	else if (eventNumber >= .8 && eventNumber < 1){
+	else if (eventNumber >= .83 && eventNumber < .86){
 		string = '\"Achoo!\"';
 		eventText(string);
 	}
-	else if (eventNumber >= .8 && eventNumber < 1){
-		string = '\"What\'s this covered in vines? I think people used to live in it!\"';
+	else if (eventNumber >= .86 && eventNumber < .94){
+		string = 'Hey, player! Yes, you! You rock!! :3';
+		eventText(string);
+	}
+	else if (eventNumber >= 33 && eventNumber < 1){
+		string = 'You found a small pile of logs. +10 Wood!';
+		// currentWoods += 10;
+		// $("#woodTxt").fadeIn(1000);
+		// $("#wood").html(currentWoods)
 		eventText(string);
 	}
 }
@@ -138,9 +146,8 @@ function discoverStone(){
 function findGuide(){
 	string = "It's a Journal!";
 	$("#msgBoxContent").html(string);
-	$("#stoneButton").fadeIn(1000);
-	$("#lookAround").html("Keep Exploring");
-	$("#lookAround").click(function(){ randomEvent(Math.random());});
+	// $("#lookAround").html("Keep Exploring");
+	// $("#lookAround").click(function(){ randomEvent(Math.random());});
 }
 //Random animals and their probabilities of appearing.
 function randomAnimal(){
