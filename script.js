@@ -6,6 +6,9 @@ var currentWoods = 0;
 var currentMinerals = 0;
 var currentWorkers = 0;
 var currentAxes = 0; 
+var limitBerries = 150;
+var limitWoods = 50;
+var limitMinerals = 75;
 
 //worker productivity interval
 var workerIncrement = 2000;
@@ -22,7 +25,11 @@ function increase(method){  console.log(method);
 //basic resource incrementation
 function food(){
   currentBerries++;
-  document.getElementById("food").innerHTML = currentBerries;
+  if (currentBerries > limitBerries){
+    currentBerries = limitBerries;
+    $("#berryButton").prop("disabled", true);
+  }
+  document.getElementById("food").innerHTML = currentBerries + "/" + limitBerries;
 }
 function wood(){
   currentWoods++;
@@ -35,7 +42,7 @@ function mineral(){
 
 //updates basic resource count on screen
 function updateBasic(){
-  document.getElementById("food").innerHTML = currentBerries;
+  document.getElementById("food").innerHTML = currentBerries + "/" + limitBerries;
   document.getElementById("wood").innerHTML = currentWoods;
   document.getElementById("mineral").innerHTML = currentMinerals;
 }
@@ -51,14 +58,18 @@ function updateBasic(){
 // WorkerButton.setAttribute("value", "Craft Worker");
 // WorkerButton.setAttribute("id", "WorkerBttn")
 // document.body.appendChild(WorkerButton);
+$("#axeButton").click(function(){    increase(axe);});
+
 function axe(){
-  if (currentBerries >= 5 && currentMinerals >= 25 && currentWoods >= 75){
-  currentBerries = currentBerries - 5;
-  currentMinerals = currentMinerals -25;
-  currentWoods = currentWoods - 75;
+  if (currentBerries >= 10 && currentMinerals >= 50 && currentWoods >= 100){
+  currentBerries = currentBerries - 10;
+  currentMinerals = currentMinerals -50;
+  currentWoods = currentWoods - 100;
   currentAxes++;
   updateBasic();
-  document.getElementById("currentAxes").innerHTML = currentAxes;
+  document.getElementById("axes").innerHTML = currentAxes;
+  $("#axeButton").prop("disabled", true);
+
   }
 }
 

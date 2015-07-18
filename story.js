@@ -1,11 +1,13 @@
 //intro button delay time
 var introDelay = 20;
 //explore button delay time
-var exploreDelay = 20;
+var exploreDelay = 50;
 //used for switch statement
 var updateNumber = 0;
 //Stone unlocked = true
 var stone = false;
+//journal found = true
+var guide = false;
 //loads window
 
 
@@ -62,18 +64,18 @@ function startGame(){
 	$("#basic").fadeIn(1000);
 	$("#foodTxt").fadeIn(1500);
 	setTimeout(function(){ $("#lookAround").prop("disabled", false);}, 2000);
-	$("#lookAround").click(function(){ randomEvent(Math.random());});
+	$("#lookAround").attr("onclick","randomEvent(Math.random())");
 }
 
 function randomEvent(eventNumber){
 	console.log("eventNumber");
-	if (eventNumber < .03){
+	if (eventNumber < .07){
 		if(!stone){
 			string = "You tripped and fell into a... crater?! "
 			$("#msgBoxContent").html(string);
 			$("#lookAround").html("Ouch!!");
-			// $("#lookAround").attr("onclick","new_function_name()");
-			$("#lookAround").click(function(){discoverStone();});
+			$("#lookAround").attr("onclick","discoverStone()");
+			// $("#lookAround").click(function(){discoverStone();});
 			stone = true;
 		}
 		else {
@@ -81,8 +83,8 @@ function randomEvent(eventNumber){
 			eventText(string);
 		}
 	 }
-	else if (eventNumber >= .03 && eventNumber < .35){
-		if (eventNumber < .12){
+	else if (eventNumber < .28){
+		if (eventNumber < .16){
 			plant = "bush "
 			prep = "behind ";
 		}
@@ -93,44 +95,63 @@ function randomEvent(eventNumber){
 		string = "\"That " + plant +  "just rustled! I wonder what's " + prep + "it...\"";
 		eventText(string);
 	}
-	else if (eventNumber >= .35 && eventNumber < .5){
+	else if (eventNumber < .40){
 		string = "You found some " + randomAnimal() + " tracks.";
 		eventText(string);
 	}
-	else if (eventNumber >= .5 && eventNumber < .53){
+	else if (eventNumber < .42){
 		string = "\"..ZZZzzzzz\"";
 		eventText(string);
 	}
-	else if (eventNumber >= .53 && eventNumber < .58){
+	else if (eventNumber < .44){
 		string = "You had a very introspective discussion on self identity with the local owl.";
 		eventText(string);
 	}
-	else if (eventNumber >= .58 && eventNumber < .75){
+	else if (eventNumber < .58){
 		string = "You befriended a random " + randomAnimal() +"!";
 		eventText(string);
 	}
-	else if (eventNumber >= .75 && eventNumber < .8){
+	else if (eventNumber < .60){
 		string = '\"What\'s this covered in vines? I think people used to live in it!\"';
 		eventText(string);
 	}
-	else if (eventNumber >= .8 && eventNumber < .83){
-		findGuide();
+	else if (eventNumber < .62){
+		string = 'You can see your reflection in the lake... and.. are those fish?!';
+		eventText(string);
 	}
-	else if (eventNumber >= .83 && eventNumber < .86){
+	else if (eventNumber < .64){
 		string = '\"Achoo!\"';
 		eventText(string);
 	}
-	else if (eventNumber >= .86 && eventNumber < .94){
-		string = 'Hey, player! Yes, you! You rock!! :3';
+	else if (eventNumber < .68){
+		string = 'Howls can be heard in the distance. Perhaps its not safe to go exploring now.';
 		eventText(string);
 	}
-	else if (eventNumber >= 33 && eventNumber < 1){
+	else if (eventNumber < .85){
 		string = 'You found a small pile of logs. +10 Wood!';
-		// currentWoods += 10;
-		// $("#woodTxt").fadeIn(1000);
-		// $("#wood").html(currentWoods)
+		currentWoods += 10;
+		$("#woodTxt").fadeIn(1000);
+		$("#wood").html(currentWoods)
 		eventText(string);
 	}
+	else if (eventNumber < .90){
+		string = 'You found a small berry basquet!';
+		eventText(string);
+	}
+	else if (eventNumber < 1){
+			if(!guide){
+				string = "Oh, what's this in the dirt? Looks like some sort of journal!"
+				$("#msgBoxContent").html(string);
+				$("#lookAround").html("Open Journal");
+				$("#lookAround").attr("onclick","findGuide()");
+				// $("#lookAround").click(function(){discoverStone();});
+				guide = true;
+			}
+			else {
+				string = "\"There's a huge rusted structure sticking out ot the ground. I wonder what it used to be.... \"";
+				eventText(string);
+			}
+		 }
 }
 //Introduces stone button.
 function discoverStone(){
@@ -140,13 +161,17 @@ function discoverStone(){
 	$("#mineral").fadeIn(1000);
 	$("#stoneTxt").fadeIn(1000);
 	$("#lookAround").html("Keep Exploring");
-	$("#lookAround").click(function(){ randomEvent(Math.random());});
+	$("#lookAround").attr("onclick","randomEvent(Math.random())");
+	// $("#lookAround").click(function(){ randomEvent(Math.random());});
 }
 
 function findGuide(){
-	string = "It's a Journal!";
+	string = "It says: \n to make an axe, you need 50 stone and 100 wood...";
 	$("#msgBoxContent").html(string);
-	// $("#lookAround").html("Keep Exploring");
+	$("#axeButton").prop("disabled", true);
+	$("#axeButton").fadeIn();
+	$("#lookAround").html("Keep Exploring");
+	$("#lookAround").attr("onclick","randomEvent(Math.random())");
 	// $("#lookAround").click(function(){ randomEvent(Math.random());});
 }
 //Random animals and their probabilities of appearing.
