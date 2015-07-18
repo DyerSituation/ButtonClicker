@@ -1,7 +1,7 @@
 //intro button delay time
-var introDelay = 20;
+var introDelay = 2000;
 //explore button delay time
-var exploreDelay = 50;
+var exploreDelay = 4000;
 //used for switch statement
 var updateNumber = 0;
 //Stone unlocked = true
@@ -99,23 +99,25 @@ function randomEvent(eventNumber){
 		string = "You found some " + randomAnimal() + " tracks.";
 		eventText(string);
 	}
-	else if (eventNumber < .42){
-		string = "\"..ZZZzzzzz\"";
-		eventText(string);
-	}
 	else if (eventNumber < .44){
+		string = "You stepped in some berries! Wow, they are sticky..";
+		eventText(string);
+		$("#glueButton").prop("disabled", true);
+		$("#glueButton").fadeIn();
+	}
+	else if (eventNumber < .46){
 		string = "You had a very introspective discussion on self identity with the local owl.";
 		eventText(string);
 	}
-	else if (eventNumber < .58){
+	else if (eventNumber < .60){
 		string = "You befriended a random " + randomAnimal() +"!";
 		eventText(string);
 	}
-	else if (eventNumber < .60){
+	else if (eventNumber < .62){
 		string = '\"What\'s this covered in vines? I think people used to live in it!\"';
 		eventText(string);
 	}
-	else if (eventNumber < .62){
+	else if (eventNumber < .64){
 		string = 'You can see your reflection in the lake... and.. are those fish?!';
 		eventText(string);
 	}
@@ -135,8 +137,10 @@ function randomEvent(eventNumber){
 		eventText(string);
 	}
 	else if (eventNumber < .90){
-		string = 'You found a small berry basquet!';
+		string = 'Wow, these berries are REALLY good! Animals seem to love them too...';
 		eventText(string);
+		$("#juiceButton").prop("disabled", true);
+		$("#juiceButton").fadeIn();
 	}
 	else if (eventNumber < 1){
 			if(!guide){
