@@ -181,31 +181,79 @@ function findGuide(){
 //Random animals and their probabilities of appearing.
 function randomAnimal(){
 	var num = Math.random();
-	if( num < .2){
+	if( num < .04){
 		return "ant";
 	}
-	else if(num >= .2 && num < .4){
+	else if(num < .08){
 		return "caterpillar";
 	}
-	else if(num >= .4 && num < .6){
+	else if(num < .12){
 		return "mouse";
 	}
-	else if(num >= .6 && num < .7){
-		return "mouse";
+	else if(num < .18){
+		return "turtle";
 	}
-	else if(num >= .7 && num < .8){
-		return "ant eater";
+	else if(num < .24){
+		return "aardvark";
 	}
-	else if(num >= .8 && num < .85){
-		return "wildcat";
+	else if(num < .26){
+		return "bobcat";
 	}
-	else if(num >= .85 && num < .9){
-		return "bear";
+	else if(num < .28){
+		return "brown bear";
 	}
-	else if(num >= .9 && num < .95){
-		return "human";
+	else if(num < .285){
+		return "Donald Trump";
 	}
-	else if(num >= .95 && num < 2){
+	else if(num < .3){
 		return "pikachu";
+	}
+	else if(num < .31){
+		return "digimon";
+	}
+	else if(num < .38){
+		return "racoon";
+	}
+	else if(num < .46){
+		return "deer";
+	}
+	else if(num < .5){
+		return "squirrel";
+	}
+	else if(num < .52){
+		return "nine tailed fox";
+	}
+	else if(num < .6){
+		return "eagle";
+	}
+	else if(num < .65){
+		return "owl";
+	}
+	else if(num < .7){
+		return "moose";
+	}
+	else if(num < .77){
+		return "sloth";
+	}
+	else if(num < .8){
+		return "zombie";
+	}
+	else if(num < .9){
+		return "fish";
+	}
+	else if(num < .91){
+		return "孙悟空";
+	}
+	else if(num < .93){
+		return "けつばん";
+	}
+	else if(num < .97){
+		return "Hyena";
+	}
+	else if(num < .98){
+		return "decepticon";
+	}
+	else if(num < .99){
+		return "developer";
 	}
 }
