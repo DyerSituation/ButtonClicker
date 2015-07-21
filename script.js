@@ -1,11 +1,11 @@
 // Erik Dyer
 
 //Initiate resources to 0
-var currentBerries = 0; 
+var currentBerries = 0;
 var currentWoods = 0;
 var currentMinerals = 0;
 var currentWorkers = 0;
-var currentAxes = 0; 
+var currentAxes = 0;
 var currentJuices = 0;
 var currentGlues = 0;
 var limitBerries = 150;
@@ -71,11 +71,10 @@ function juice(){
   currentBerries = currentBerries - 100;
   currentJuices++;
   updateBasic();
-  document.getElementById("axes").innerHTML = currentAxes;
   console.log(currentJuices);
 }
   if (!(currentBerries >= 100)){
-    $("#axeButton").prop("disabled", true);
+    $("#juiceButton").prop("disabled", true);
 
   }
 }
@@ -85,11 +84,10 @@ function glue(){
   currentBerries = currentBerries - 175;
   currentGlues++;
   updateBasic();
-  document.getElementById("axes").innerHTML = currentAxes;
   console.log(currentGlues);
 }
   if (!(currentBerries >= 175)){
-    $("#axeButton").prop("disabled", true);
+    $("#glueButton").prop("disabled", true);
 
   }
 }
@@ -117,7 +115,7 @@ function increment(num){
     if (currentBerries >= 100){
       $("#juiceButton").prop("disabled", false);
     }
-  //enable glue 
+  //enable glue
     if (currentBerries >= 175){
       $("#glueButton").prop("disabled", false);
     }

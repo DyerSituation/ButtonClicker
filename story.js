@@ -1,9 +1,14 @@
 //intro button delay time
-var introDelay = 2000;
+var introDelay = 20;
 //explore button delay time
-var exploreDelay = 4000;
+var exploreDelay = 40;
 //used for switch statement
 var updateNumber = 0;
+
+var exp = 0
+
+var  EventsArray = [PlantActiveEvent, TracksActiveEvent, BefriendActionEvent, FishActionEvent];
+
 //Stone unlocked = true
 var stone = false;
 //journal found = true
@@ -61,101 +66,19 @@ function eventText(content){
 
 function startGame(){
 	$("#berryButton").fadeIn(1000);
-	$("#basic").fadeIn(1000);
+	$("#resources").fadeIn(1000);
 	$("#foodTxt").fadeIn(1500);
 	setTimeout(function(){ $("#lookAround").prop("disabled", false);}, 2000);
 	$("#lookAround").attr("onclick","randomEvent(Math.random())");
 }
 
 function randomEvent(eventNumber){
-	console.log("eventNumber");
-	if (eventNumber < .07){
-		if(!stone){
-			string = "You tripped and fell into a... crater?! "
-			$("#msgBoxContent").html(string);
-			$("#lookAround").html("Ouch!!");
-			$("#lookAround").attr("onclick","discoverStone()");
-			// $("#lookAround").click(function(){discoverStone();});
-			stone = true;
-		}
-		else {
-			string = "\"There's a huge rusted structure sticking out ot the ground. I wonder what it used to be.... \"";
-			eventText(string);
-		}
-	 }
-	else if (eventNumber < .28){
-		if (eventNumber < .16){
-			plant = "bush "
-			prep = "behind ";
-		}
-		else {
-			plant = "tree "
-			prep = "in "
-		}
-		string = "\"That " + plant +  "just rustled! I wonder what's " + prep + "it...\"";
-		eventText(string);
+	exp++;
+	console.log(exp);
+	if (exp == 10){
+		EventsArray.push(WoodResourceEvent);
 	}
-	else if (eventNumber < .40){
-		string = "You found some " + randomAnimal() + " tracks.";
-		eventText(string);
-	}
-	else if (eventNumber < .44){
-		string = "You stepped in some berries! Wow, they are sticky..";
-		eventText(string);
-		$("#glueButton").prop("disabled", true);
-		$("#glueButton").fadeIn();
-	}
-	else if (eventNumber < .46){
-		string = "You had a very introspective discussion on self identity with the local owl.";
-		eventText(string);
-	}
-	else if (eventNumber < .60){
-		string = "You befriended a random " + randomAnimal() +"!";
-		eventText(string);
-	}
-	else if (eventNumber < .62){
-		string = '\"What\'s this covered in vines? I think people used to live in it!\"';
-		eventText(string);
-	}
-	else if (eventNumber < .64){
-		string = 'You can see your reflection in the lake... and.. are those fish?!';
-		eventText(string);
-	}
-	else if (eventNumber < .64){
-		string = '\"Achoo!\"';
-		eventText(string);
-	}
-	else if (eventNumber < .68){
-		string = 'Howls can be heard in the distance. Perhaps its not safe to go exploring now.';
-		eventText(string);
-	}
-	else if (eventNumber < .85){
-		string = 'You found a small pile of logs. +10 Wood!';
-		currentWoods += 10;
-		$("#woodTxt").fadeIn(1000);
-		$("#wood").html(currentWoods)
-		eventText(string);
-	}
-	else if (eventNumber < .90){
-		string = 'Wow, these berries are REALLY good! Animals seem to love them too...';
-		eventText(string);
-		$("#juiceButton").prop("disabled", true);
-		$("#juiceButton").fadeIn();
-	}
-	else if (eventNumber < 1){
-			if(!guide){
-				string = "Oh, what's this in the dirt? Looks like some sort of journal!"
-				$("#msgBoxContent").html(string);
-				$("#lookAround").html("Open Journal");
-				$("#lookAround").attr("onclick","findGuide()");
-				// $("#lookAround").click(function(){discoverStone();});
-				guide = true;
-			}
-			else {
-				string = "\"There's a huge rusted structure sticking out ot the ground. I wonder what it used to be.... \"";
-				eventText(string);
-			}
-		 }
+	EventsArray[Math.floor(Math.random() * EventsArray.length)]();
 }
 //Introduces stone button.
 function discoverStone(){
