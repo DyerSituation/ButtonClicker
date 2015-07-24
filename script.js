@@ -34,6 +34,14 @@ function food(){
   //   currentBerries = limitBerries;
   //   $("#berryButton").prop("disabled", true);
   document.getElementById("food").innerHTML = currentBerries; //+ "/" + limitBerries;
+  $("#inventory").fadeIn().css("display", "inline-block");
+  if ($('#inventoryGlue').length > 0) {
+    $("#glueCount").html(currentBerries);
+}
+else{
+  addInventoryItem("<p id = 'inventoryGlue'> Glue -x <section id='glueCount'>"+currentBerries+"</section></p>");
+}
+
 }
 function wood(){
   currentWoods++;
@@ -45,11 +53,17 @@ function mineral(){
 }
 
 //updates basic resource count on screen
-function updateBasic(){
+function updateResources(){
   document.getElementById("food").innerHTML = currentBerries;
   document.getElementById("wood").innerHTML = currentWoods;
   document.getElementById("mineral").innerHTML = currentMinerals;
 }
+
+function addInventoryItem(item){
+$("#inventoryContent").append(item);
+}
+
+
 
 function axe(){
   if (currentBerries >= 0 && currentMinerals >= 50 && currentWoods >= 100){
@@ -57,7 +71,7 @@ function axe(){
   currentMinerals = currentMinerals -50;
   currentWoods = currentWoods - 100;
   currentAxes++;
-  updateBasic();
+  updateResources();
   document.getElementById("axes").innerHTML = currentAxes;
 }
   if (!(currentBerries >= 0 && currentMinerals >= 50 && currentWoods >= 100)){
@@ -70,7 +84,7 @@ function juice(){
   if (currentBerries >= 100){
   currentBerries = currentBerries - 100;
   currentJuices++;
-  updateBasic();
+  updateResources();
   console.log(currentJuices);
 }
   if (!(currentBerries >= 100)){
@@ -83,7 +97,7 @@ function glue(){
   if (currentBerries >= 175){
   currentBerries = currentBerries - 175;
   currentGlues++;
-  updateBasic();
+  updateResources();
   console.log(currentGlues);
 }
   if (!(currentBerries >= 175)){
@@ -98,7 +112,7 @@ function worker(){
   currentMinerals = currentMinerals -20;
   currentWoods = currentWoods - 20;
   currentWorkers++;
-  updateBasic();
+  updateResources();
   document.getElementById("currentWorkers").innerHTML = currentWorkers;
   }
 }
@@ -110,7 +124,7 @@ function increment(num){
   currentBerries = currentBerries + num;
   currentWoods = currentWoods + num;
   currentMinerals = currentMinerals + num;
-  updateBasic();
+  updateResources();
   //enable juice
     if (currentBerries >= 100){
       $("#juiceButton").prop("disabled", false);

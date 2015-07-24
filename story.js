@@ -65,8 +65,8 @@ function eventText(content){
 }
 
 function startGame(){
-	$("#berryButton").fadeIn(1000);
-	$("#resources").fadeIn(1000);
+	$("#berryButton").fadeIn(1000).css("display", "inline-block");
+	$("#resources").fadeIn(1000).css("display", "inline-block");
 	$("#foodTxt").fadeIn(1500);
 	setTimeout(function(){ $("#lookAround").prop("disabled", false);}, 2000);
 	$("#lookAround").attr("onclick","randomEvent(Math.random())");
