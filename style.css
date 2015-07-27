@@ -1,4 +1,4 @@
-#basic{
+#resources{
 	border: 2px solid #a1a1a1;
 	width: 50px;
 	padding: 10px 20px;
@@ -8,8 +8,22 @@
 	border-radius: 10px;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1)));
 	text-align: center;
+	display: inline-block;
     }
-#berryButton, #woodButton, #stoneButton, #lookAround, #msgBox, #status, #basic, #foodTxt, #woodTxt, #stoneTxt, #axesTxt, #workersTxt, #minerals, #axeButton, #juiceButton, #glueButton {
+
+#inventory{
+	border: 2px solid #a1a1a1;
+	width: 100px;
+	padding: 10px 20px;
+	margin-top: 10px;
+	margin-left: 20%;
+	margin-bottom: 5px;
+	border-radius: 10px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1)));
+	text-align: center;
+	display: inline-block;
+    }
+ #b, #c, #inventory, #berryButton, #woodButton, #stoneButton, #lookAround, #msgBox, #status, #resources, #foodTxt, #woodTxt, #stoneTxt, #axesTxt, #workersTxt, #minerals, #axeButton, #juiceButton, #glueButton {
 	display: none;
 }
 #lookAround{
@@ -18,17 +32,32 @@
 #msgBox {
     border: 2px solid #a1a1a1;
     padding: 10px 40px;
+		margin-top: 5px;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(241,241,241,1)), color-stop(51%,rgba(225,225,225,1)), color-stop(100%,rgba(246,246,246,1)));
     width: 300px;
     border-radius: 25px;
+	float:inherit;
+	overflow: auto;
 }
-
+td{
+	width: 10%;
+	border-bottom: 1px dashed #BDBDBD;
+	border-collapse: collapse;
+}
 #msgBoxHead{
 	font-family: "Lucida Console", Monaco, monospace;
 	font-size: 10px;
 	font-weight: bold;
+	text-align: left;
 }
+#inventoryHead{
+	font-family: "Lucida Console", Monaco, monospace;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: left;
+  	background:rgba(189,189,189,0.5);
 
+}
 #msgBoxContent{
 	font-size: 18px;
 	text-align: center;

@@ -15,9 +15,14 @@
     <!-- User Location -->
     <p id="status">You are in <span id="location" title ="Your location">the forrest.</span></p>
     <!-- First Exploration -->
-    <div id="exp">
+    <div>Exp:<span id ="exp">0</span></div>
+    <br>
+    <div>
       <button id= "lookAround">Explore Forest</button>
+      <button id= "b"></button>
+      <button id= "c"></button>
     </div>
+
     <!-- Basic Resources -->
     <div id="levelOne">
       <button id= "berryButton" type="button">Pick Berries</button>
@@ -32,17 +37,30 @@
     </div>
     <!-- Content Script -->
     <script src="script.js"></script>
-
+<script src="events.js"></script>
     <!-- Story Line -->
     <script src="story.js"></script>
+
     <br>
     <!-- Resource Display -->
-    <div id="basic">
+    <div id="resources">
       <div id = "footTxt">Berries: <div id ="food">0</div></div>
       <div id = "woodTxt">Wood: <div id ="wood">0</div></div>
       <div id = "stoneTxt">Stone: <div id ="mineral">0/</div></div>
       <div id = "axesTxt">Axes: <div id="axes">0</div></div>
       <div id = "workersTxt">Workers: <div id="workers">0</div></div>
+    </div>
+    <!-- Inventory Display -->
+    <div id="inventory">
+      <div id="inventoryHead">Inventory
+      </div>
+      <div id = "inventoryContent">
+        <table id = "inventoryTable">
+          <tbody>
+            
+          </tbody>
+        </table>
+      </div>
     </div>
     <div id="msgBox">
       <div id="msgBoxHead">Message Box

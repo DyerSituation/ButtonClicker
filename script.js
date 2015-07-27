@@ -1,13 +1,13 @@
 // Erik Dyer
 
 //Initiate resources to 0
-var currentBerries = 0; 
-var currentWoods = 0;
-var currentMinerals = 0;
-var currentWorkers = 0;
-var currentAxes = 0; 
-var currentJuices = 0;
-var currentGlues = 0;
+var currentBerries = 1000;
+var currentWoods = 10000;
+var currentMinerals = 1000;
+var currentWorkers = 00;
+var currentAxes = 0;
+var currentJuices = 00;
+var currentGlues = 00;
 var limitBerries = 150;
 var limitWoods = 50;
 var limitMinerals = 75;
@@ -45,20 +45,42 @@ function mineral(){
 }
 
 //updates basic resource count on screen
-function updateBasic(){
+function updateResources(){
   document.getElementById("food").innerHTML = currentBerries;
   document.getElementById("wood").innerHTML = currentWoods;
   document.getElementById("mineral").innerHTML = currentMinerals;
 }
 
+function addInventoryItem(item){
+  $("#inventory").fadeIn().css("display", "inline-block");
+  if ($('#inventoryGlue').length > 0) {
+    $("#glueCount").html(currentBerries);
+}
+else{
+  string = "<tr id = 'inventoryGlue'><td>Glue</td><td id = 'glueCount'>"+"   x"+currentBerries+"</td>";
+  $("#inventoryContent").append(item);
+}
+}
+
+
+
 function axe(){
-  if (currentBerries >= 0 && currentMinerals >= 50 && currentWoods >= 100){
-  currentBerries = currentBerries - 10;
-  currentMinerals = currentMinerals -50;
-  currentWoods = currentWoods - 100;
-  currentAxes++;
-  updateBasic();
-  document.getElementById("axes").innerHTML = currentAxes;
+  if (currentBerries >= 10 && currentMinerals >= 50 && currentWoods >= 100){
+    currentBerries = currentBerries - 10;
+    currentMinerals = currentMinerals -50;
+    currentWoods = currentWoods - 100;
+    currentAxes++;
+    updateResources();
+    $("#woodButton").fadeIn;
+    $("#woodTxt").fadeIn;
+    $("#inventory").fadeIn().css("display", "inline-block");
+    if ($('#inventoryAxe').length > 0) {
+      $("#axeCount").html("x"+currentAxes);
+    }
+    else{
+      string = "<tr id = 'inventoryAxe'><td>Axes</td><td id = 'axeCount'>"+"   x"+currentAxes+"</td>";
+      $("#inventoryContent").append(string);
+    }
 }
   if (!(currentBerries >= 0 && currentMinerals >= 50 && currentWoods >= 100)){
     $("#axeButton").prop("disabled", true);
@@ -70,12 +92,19 @@ function juice(){
   if (currentBerries >= 100){
   currentBerries = currentBerries - 100;
   currentJuices++;
-  updateBasic();
-  document.getElementById("axes").innerHTML = currentAxes;
+  updateResources();
   console.log(currentJuices);
 }
+$("#inventory").fadeIn().css("display", "inline-block");
+  if ($('#inventoryJuice').length > 0) {
+    $("#juicesCount").html("x"+currentJuices);
+}
+else{
+  string = "<tr id = 'inventoryJuice'><td>Juice</td><td id = 'juicesCount'>"+"   x"+currentJuices+"</td>";
+  $("#inventoryContent").append(string);
+}
   if (!(currentBerries >= 100)){
-    $("#axeButton").prop("disabled", true);
+    $("#juiceButton").prop("disabled", true);
 
   }
 }
@@ -84,12 +113,18 @@ function glue(){
   if (currentBerries >= 175){
   currentBerries = currentBerries - 175;
   currentGlues++;
-  updateBasic();
-  document.getElementById("axes").innerHTML = currentAxes;
-  console.log(currentGlues);
+  updateResources();
+  $("#inventory").fadeIn().css("display", "inline-block");
+  if ($('#inventoryGlue').length > 0) {
+    $("#glueCount").html("x"+currentGlues);
+  }
+  else{
+    string = "<tr id = 'inventoryGlue'><td>Glue</td><td id = 'glueCount'>"+"   x"+currentGlues+"</td>";
+    $("#inventoryContent").append(string);
+}
 }
   if (!(currentBerries >= 175)){
-    $("#axeButton").prop("disabled", true);
+    $("#glueButton").prop("disabled", true);
 
   }
 }
@@ -100,7 +135,7 @@ function worker(){
   currentMinerals = currentMinerals -20;
   currentWoods = currentWoods - 20;
   currentWorkers++;
-  updateBasic();
+  updateResources();
   document.getElementById("currentWorkers").innerHTML = currentWorkers;
   }
 }
@@ -112,12 +147,12 @@ function increment(num){
   currentBerries = currentBerries + num;
   currentWoods = currentWoods + num;
   currentMinerals = currentMinerals + num;
-  updateBasic();
+  updateResources();
   //enable juice
     if (currentBerries >= 100){
       $("#juiceButton").prop("disabled", false);
     }
-  //enable glue 
+  //enable glue
     if (currentBerries >= 175){
       $("#glueButton").prop("disabled", false);
     }
@@ -125,5 +160,11 @@ function increment(num){
     if (currentBerries >= 0 && currentMinerals >= 50 && currentWoods >= 100){
       $("#axeButton").prop("disabled", false);
     }
+     if (currentAxes > 0){
+      $("#axeButton").prop("disabled", false);
+      $("#woodButton").fadeIn();
+    }
+
+
 }
 
