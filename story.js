@@ -1,19 +1,20 @@
 //intro button delay time
 var introDelay = 20;
 //explore button delay time
-var exploreDelay = 40;
+var exploreDelay = 2000;
 //used for switch statement
 var updateNumber = 0;
 
 var exp = 0
 
-var  EventsArray = [PlantActiveEvent, TracksActiveEvent, BefriendActionEvent, FishActionEvent];
+var  EventsArray = [PlantActiveEvent, TracksActiveEvent, BefriendActionEvent];
 
 //Stone unlocked = true
 var stone = false;
 //journal found = true
 var guide = false;
 //loads window
+var juiceToAnimal = false;
 
 
 $( window ).load(function() { show(); })
@@ -73,12 +74,54 @@ function startGame(){
 }
 
 function randomEvent(eventNumber){
-	exp++;
+    $("#b").slideUp();
+    $("#c").slideUp();
+	exp +=5;
 	console.log(exp);
-	if (exp == 10){
+	$("#exp").html(exp);
+	if (exp == 40){
+		EventsArray.push(HutTextEvent);
+		EventsArray.push(OwlTextEvent);
+		EventsArray.push(WoodResourceEvent);
 		EventsArray.push(WoodResourceEvent);
 	}
-	EventsArray[Math.floor(Math.random() * EventsArray.length)]();
+	if (exp == 80){
+		EventsArray.push(BerryGlueDiscoveryEvent);
+		EventsArray.push(BerryGlueDiscoveryEvent);
+		EventsArray.push(BerryGlueDiscoveryEvent);
+		EventsArray.push(PlantActiveEvent);
+		EventsArray.push(BefriendActionEvent);
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(StoneResourceEvent);
+	}
+	if (exp == 120){
+		EventsArray.push(DangerActionEvent);
+		EventsArray.push(DangerActionEvent);
+		EventsArray.push(StoneResourceEvent);
+		EventsArray.push(WoodResourceEvent);	
+		EventsArray.push(StoneResourceEvent);
+		EventsArray.push(WoodResourceEvent);
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(StoneResourceEvent);
+	}
+	if (exp == 150){
+		EventsArray.push(oldWomanEvent);
+		EventsArray.push(oldWomanEvent);
+		EventsArray.push(forestGuruEvent);
+		EventsArray.push(forestGuruEvent);
+		EventsArray.push(StoneResourceEvent);
+	}
+	if (exp == 250){
+		EventsArray.push(WoodResourceEvent);
+		EventsArray.push(StoneStoryEvent);
+		EventsArray.push(StoneStoryEvent);
+		EventsArray.push(StoneResourceEvent);
+	}
+
+	instanceEvent = EventsArray[Math.floor(Math.random() * EventsArray.length)];
+	console.log(instanceEvent);
+	instanceEvent();
 }
 //Introduces stone button.
 function discoverStone(){
@@ -104,31 +147,55 @@ function findGuide(){
 //Random animals and their probabilities of appearing.
 function randomAnimal(){
 	var num = Math.random();
-	if( num < .2){
+	if( num < .1){
 		return "ant";
 	}
-	else if(num >= .2 && num < .4){
+	else if(num< .2){
 		return "caterpillar";
 	}
-	else if(num >= .4 && num < .6){
+	else if(num < .3){
 		return "mouse";
 	}
-	else if(num >= .6 && num < .7){
-		return "mouse";
+	else if(num < .4){
+		return "aardvark";
 	}
-	else if(num >= .7 && num < .8){
+	else if(num < .5){
+		return "Donald Trump";
+	}
+	else if(num < .6){
+		return "bobcat";
+	}
+	else if(num < .65){
+		return "Kane";
+	}
+	else if(num < .7){
+		return "tucan";
+	}
+	else if(num < .75){
+		return "朋友";
+	}
+	else if(num< .8){
+		return "griffin";
+	}
+	else if(num < .9){
+		return "我喜欢你啊";
+	}
+	else if(num < 7){
+		return "cat";
+	}
+	else if(num < .8){
 		return "ant eater";
 	}
-	else if(num >= .8 && num < .85){
+	else if(num < .85){
 		return "wildcat";
 	}
-	else if(num >= .85 && num < .9){
+	else if(num < .9){
 		return "bear";
 	}
-	else if(num >= .9 && num < .95){
+	else if(num < .95){
 		return "human";
 	}
-	else if(num >= .95 && num < 2){
+	else if(num < 2){
 		return "pikachu";
 	}
 }

@@ -13,7 +13,7 @@
 
 #inventory{
 	border: 2px solid #a1a1a1;
-	width: 50px;
+	width: 100px;
 	padding: 10px 20px;
 	margin-top: 10px;
 	margin-left: 20%;
@@ -23,7 +23,7 @@
 	text-align: center;
 	display: inline-block;
     }
-#inventory, #berryButton, #woodButton, #stoneButton, #lookAround, #msgBox, #status, #resources, #foodTxt, #woodTxt, #stoneTxt, #axesTxt, #workersTxt, #minerals, #axeButton, #juiceButton, #glueButton {
+ #b, #c, #inventory, #berryButton, #woodButton, #stoneButton, #lookAround, #msgBox, #status, #resources, #foodTxt, #woodTxt, #stoneTxt, #axesTxt, #workersTxt, #minerals, #axeButton, #juiceButton, #glueButton {
 	display: none;
 }
 #lookAround{
@@ -39,17 +39,24 @@
 	float:inherit;
 	overflow: auto;
 }
-
+td{
+	width: 10%;
+	border-bottom: 1px dashed #BDBDBD;
+	border-collapse: collapse;
+}
 #msgBoxHead{
 	font-family: "Lucida Console", Monaco, monospace;
 	font-size: 10px;
 	font-weight: bold;
+	text-align: left;
 }
-#InventoryHead{
+#inventoryHead{
 	font-family: "Lucida Console", Monaco, monospace;
 	font-size: 10px;
 	font-weight: bold;
 	text-align: left;
+  	background:rgba(189,189,189,0.5);
+
 }
 #msgBoxContent{
 	font-size: 18px;
