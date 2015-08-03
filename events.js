@@ -10,6 +10,8 @@ There are three types of events:
     Events that allow for crafting new material
 */
 var randitems = [currentBerries, currentWoods, currentMinerals];
+var maxSkip = 1;
+// STONE
 function StoneStoryEvent(exp){
   if(!stone){
     string = "You tripped and fell into a... crater?! ";
@@ -24,6 +26,7 @@ function StoneStoryEvent(exp){
     eventText(string);
   }
 }
+
 
 function PlantActiveEvent(exp){
   if (Math.random() < .5){
@@ -56,16 +59,30 @@ function BefriendActionEvent(exp){
   string = "You befriended a random " + animal +"!";
   eventText(string);
   if (juiceToAnimal){
-    $("#b").html("offer berry juice").slideDown();
+    $("#b").html("offer berry juice").slideDown().prop("disabled", true);
     $("#b").attr("onclick","randomItem(animal)");
+    if (currentJuices > 0){
+        $("#b").prop("disabled", false)
+        currentJuices = currentJuices -1;
+    }
   }
 }
 
 function FishActionEvent(exp){
   string = 'You can see your reflection in the lake... and.. are those fish?!';
+  $("#b").slideDown().html("Go for swim");
+  if (currentMinerals > 0){
+    $("#c").slideDown().html("Skip Stone").attr("onclick","stoneSkip()");
+    }
   eventText(string);
 }
-
+function stoneSkip(){
+    if (currentMinerals > 0){
+        maxSkip = Math.ceil(maxSkip * (Math.random()+.6));
+        string = "Your stone went " + maxSkip + " jumps!";
+        eventText(string);
+    }
+}
 function DangerActionEvent(exp){
   string = 'Howls can be heard in the distance. Perhaps its not safe to go exploring now.';
   eventText(string);
@@ -93,20 +110,6 @@ function BerryJuiceEvent(exp){
   $("#juiceButton").fadeIn();
 }
 
-function JournalStoryEvent(exp){
-  if(!guide){
-    string = "Oh, what's this in the dirt? Looks like some sort of journal!"
-    $("#msgBoxContent").html(string);
-    $("#lookAround").html("Open Journal");
-    $("#lookAround").attr("onclick","findGuide()");
-    // $("#lookAround").click(function(){discoverStone();});
-    guide = true;
-  }
-  else {
-    string = "\"There's a huge rusted structure sticking out ot the ground. I wonder what it used to be.... \"";
-    eventText(string);
-}
-}
 function oldWomanEvent(exp){
   string = "You come across an ancient hut, floating two feet above the ground.";
   eventText(string);
@@ -172,7 +175,7 @@ function getAnimalAdvice(){
     currentJuices = currentJuices - 1;
     $("#b").slideUp();
     $("#c").slideUp();
-    string = "Nice! you know, animals love this stuff!";
+    string = "Nice! You know, animals love this stuff.";
     eventText(string);
     juiceToAnimal = true;
   }
@@ -189,20 +192,24 @@ function HutTextEvent(exp){
 }
 function randomItem(){
   num = Math.random();
-  if (num < .20){
+  if (num < .15){
     currentBerries += 30;
-    gift = "berries";
+    gift = "30 berries";
   }
-  else if (num <.70){
+  else if (num <.30){
     currentWoods += 30;
-    gift = "wood";
+    gift = "30 wood";
    }
+   else if (num <.50){
+     currentWoods += 30;
+     gift = "a special stick. Its pointy! (Need to program the stick later.)";
+    }
   else{
     currentMinerals += 20;
-    gift = "stone";
+    gift = "30 stone";
    }
-  test = "The " + animal + " gave you some " + gift + "!";
-  eventText(test);  
+  test = "The " + animal + " gave you " + gift + "!";
+  eventText(test);
   $("#b").slideUp();
 }
 

@@ -1,7 +1,7 @@
 //intro button delay time
 var introDelay = 20;
 //explore button delay time
-var exploreDelay = 2000;
+var exploreDelay = 20;
 //used for switch statement
 var updateNumber = 0;
 
@@ -80,6 +80,16 @@ function randomEvent(eventNumber){
 	console.log(exp);
 	$("#exp").html(exp);
 	if (exp == 40){
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(FishActionEvent);
+		EventsArray.push(FishActionEvent);
 		EventsArray.push(HutTextEvent);
 		EventsArray.push(OwlTextEvent);
 		EventsArray.push(WoodResourceEvent);
@@ -98,7 +108,7 @@ function randomEvent(eventNumber){
 		EventsArray.push(DangerActionEvent);
 		EventsArray.push(DangerActionEvent);
 		EventsArray.push(StoneResourceEvent);
-		EventsArray.push(WoodResourceEvent);	
+		EventsArray.push(WoodResourceEvent);
 		EventsArray.push(StoneResourceEvent);
 		EventsArray.push(WoodResourceEvent);
 		EventsArray.push(FishActionEvent);
@@ -135,15 +145,6 @@ function discoverStone(){
 	// $("#lookAround").click(function(){ randomEvent(Math.random());});
 }
 
-function findGuide(){
-	string = "It says: \n to make an axe, you need 50 stone and 100 wood...";
-	$("#msgBoxContent").html(string);
-	$("#axeButton").prop("disabled", true);
-	$("#axeButton").fadeIn();
-	$("#lookAround").html("Keep Exploring");
-	$("#lookAround").attr("onclick","randomEvent(Math.random())");
-	// $("#lookAround").click(function(){ randomEvent(Math.random());});
-}
 //Random animals and their probabilities of appearing.
 function randomAnimal(){
 	var num = Math.random();

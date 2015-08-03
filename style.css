@@ -23,7 +23,7 @@
 	text-align: center;
 	display: inline-block;
     }
- #b, #c, #inventory, #berryButton, #woodButton, #stoneButton, #lookAround, #msgBox, #status, #resources, #foodTxt, #woodTxt, #stoneTxt, #axesTxt, #workersTxt, #minerals, #axeButton, #juiceButton, #glueButton {
+ #b, #c, #d, #e, #f, #inventory, #berryButton, #woodButton, #stoneButton, #lookAround, #msgBox, #status, #resources, #foodTxt, #woodTxt, #stoneTxt, #axesTxt, #workersTxt, #minerals, #axeButton, #juiceButton, #glueButton {
 	display: none;
 }
 #lookAround{

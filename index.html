@@ -4,9 +4,8 @@
   <head>
     <title>
       Click!
+      <meta charset="utf-8"> 
     </title>
-    <!-- testing!! -->
-    <script> console.log("Done");</script>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
@@ -15,12 +14,15 @@
     <!-- User Location -->
     <p id="status">You are in <span id="location" title ="Your location">the forrest.</span></p>
     <!-- First Exploration -->
-    <div>Exp:<span id ="exp">0</span></div>
+    <div>Forest Experience:<span id ="exp">0</span></div>
     <br>
     <div>
       <button id= "lookAround">Explore Forest</button>
       <button id= "b"></button>
       <button id= "c"></button>
+      <button id= "d"></button>
+      <button id= "e"></button>
+      <button id= "f"></button>
     </div>
 
     <!-- Basic Resources -->
@@ -30,9 +32,9 @@
       <button id= "stoneButton" type="button">Gather Stone</button>
     </div>
     <div id="items">
-      <button id= "juiceButton" type="button"><span title= "100 Berries">Craft BerryJuice</span></button>
-      <button id= "glueButton" type="button"><span title= "175 Berries">Craft BerryGlue</span></button>
-      <button id= "axeButton" type="button"><span title= "50 Stone, 100 Wood">Craft Axe</span></button>
+      <button id= "juiceButton" type="button"><span title= "60 Berries">Craft BerryJuice</span></button>
+      <button id= "glueButton" type="button"><span title= "85 Berries">Craft BerryGlue</span></button>
+      <button id= "axeButton" type="button"><span title= "1 berry glue, 50 Stone, 100 Wood">Craft Axe</span></button>
 <!--       <button id= "basquetButton" type="button">Craft Basquet</button> -->
     </div>
     <!-- Content Script -->
@@ -57,7 +59,7 @@
       <div id = "inventoryContent">
         <table id = "inventoryTable">
           <tbody>
-            
+
           </tbody>
         </table>
       </div>
