@@ -1,9 +1,9 @@
 // Erik Dyer
 
 //Initiate resources to 0
-var currentBerries = 1000;
-var currentWoods = 10000;
-var currentMinerals = 1000;
+var currentBerries = 000;
+var currentWoods = 0000;
+var currentMinerals = 000;
 var currentWorkers = 00;
 var currentAxes = 0;
 var currentJuices = 00;
@@ -88,9 +88,11 @@ function axe(){
   }
 }
 
+
+
 function juice(){
-  if (currentBerries >= 100){
-  currentBerries = currentBerries - 100;
+  if (currentBerries >= 40){
+  currentBerries = currentBerries - 40;
   currentJuices++;
   updateResources();
   console.log(currentJuices);
@@ -110,8 +112,8 @@ else{
 }
 
 function glue(){
-  if (currentBerries >= 175){
-  currentBerries = currentBerries - 175;
+  if (currentBerries >= 75){
+  currentBerries = currentBerries - 75;
   currentGlues++;
   updateResources();
   $("#inventory").fadeIn().css("display", "inline-block");
@@ -123,7 +125,7 @@ function glue(){
     $("#inventoryContent").append(string);
 }
 }
-  if (!(currentBerries >= 175)){
+  if (!(currentBerries >= 75)){
     $("#glueButton").prop("disabled", true);
 
   }
@@ -149,11 +151,11 @@ function increment(num){
   currentMinerals = currentMinerals + num;
   updateResources();
   //enable juice
-    if (currentBerries >= 100){
+    if (currentBerries >= 40){
       $("#juiceButton").prop("disabled", false);
     }
   //enable glue
-    if (currentBerries >= 175){
+    if (currentBerries >= 75){
       $("#glueButton").prop("disabled", false);
     }
   //enable axe

@@ -1,7 +1,7 @@
 //intro button delay time
-var introDelay = 20;
+var introDelay = 150;
 //explore button delay time
-var exploreDelay = 20;
+var exploreDelay = 1000;
 //used for switch statement
 var updateNumber = 0;
 
@@ -74,28 +74,22 @@ function startGame(){
 }
 
 function randomEvent(eventNumber){
-    $("#b").slideUp();
-    $("#c").slideUp();
+    $("#b").slideUp().prop("disabled", false);
+    $("#c").slideUp().prop("disabled", false);
+    $("#d").slideUp().prop("disabled", false);
+    $("#e").slideUp().prop("disabled", false);
+    $("#f").slideUp().prop("disabled", false);
+    $("#g").slideUp().prop("disabled", false);
 	exp +=5;
 	console.log(exp);
 	$("#exp").html(exp);
-	if (exp == 40){
-		EventsArray.push(FishActionEvent);
-		EventsArray.push(FishActionEvent);
-		EventsArray.push(FishActionEvent);
-		EventsArray.push(FishActionEvent);
-		EventsArray.push(FishActionEvent);
-		EventsArray.push(FishActionEvent);
-		EventsArray.push(FishActionEvent);
-		EventsArray.push(FishActionEvent);
-		EventsArray.push(FishActionEvent);
-		EventsArray.push(FishActionEvent);
+	if (exp == 20){
 		EventsArray.push(HutTextEvent);
 		EventsArray.push(OwlTextEvent);
 		EventsArray.push(WoodResourceEvent);
 		EventsArray.push(WoodResourceEvent);
 	}
-	if (exp == 80){
+	if (exp == 35){
 		EventsArray.push(BerryGlueDiscoveryEvent);
 		EventsArray.push(BerryGlueDiscoveryEvent);
 		EventsArray.push(BerryGlueDiscoveryEvent);
@@ -104,7 +98,7 @@ function randomEvent(eventNumber){
 		EventsArray.push(FishActionEvent);
 		EventsArray.push(StoneResourceEvent);
 	}
-	if (exp == 120){
+	if (exp == 45){
 		EventsArray.push(DangerActionEvent);
 		EventsArray.push(DangerActionEvent);
 		EventsArray.push(StoneResourceEvent);
@@ -115,9 +109,10 @@ function randomEvent(eventNumber){
 		EventsArray.push(FishActionEvent);
 		EventsArray.push(StoneResourceEvent);
 	}
-	if (exp == 150){
+	if (exp == 60){
 		EventsArray.push(oldWomanEvent);
 		EventsArray.push(oldWomanEvent);
+		EventsArray.push(forestGuruEvent);
 		EventsArray.push(forestGuruEvent);
 		EventsArray.push(forestGuruEvent);
 		EventsArray.push(StoneResourceEvent);
@@ -139,7 +134,7 @@ function discoverStone(){
 	$("#msgBoxContent").html(string);
 	$("#stoneButton").fadeIn(1000);
 	$("#mineral").fadeIn(1000);
-	$("#stoneTxt").fadeIn(1000);
+	$("#ston-eTxt").fadeIn(1000);
 	$("#lookAround").html("Keep Exploring");
 	$("#lookAround").attr("onclick","randomEvent(Math.random())");
 	// $("#lookAround").click(function(){ randomEvent(Math.random());});

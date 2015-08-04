@@ -78,7 +78,7 @@ function FishActionEvent(exp){
 }
 function stoneSkip(){
     if (currentMinerals > 0){
-        maxSkip = Math.ceil(maxSkip * (Math.random()+.6));
+        maxSkip = Math.sqrt(Math.ceil(maxSkip * (Math.random()+.7)));
         string = "Your stone went " + maxSkip + " jumps!";
         eventText(string);
     }
@@ -143,7 +143,7 @@ function getStone(){
     string = "'AAYY LMAO! Wood?! YEEEEET!!' The witch turned your wood into stone.";
     eventText(string);
     $("#stoneTxt").fadeIn();
-    currentMinerals += 15;
+    currentMinerals += 30;
   }
 }
 function forestGuruEvent(exp){
@@ -153,21 +153,62 @@ function forestGuruEvent(exp){
   $("#b").attr("onclick","goHike()");
 }
 function goHike(){
-  string = "'Hey there!'";
+  if (!guide){
+    string = "'Hey there!'";
+    eventText(string);
+    $("#b").html("offer 10 wood");
+    $("#b").attr("onclick", "getAxeAdvice()");
+  if (11 > currentWoods){
+    $("#b").prop("disabled", true);
+    }
+  else{
+    $("#b").prop("disabled", false);
+    }
+  }
+  else{
+    string = "'Hey there! Got my axe, kid?'";
+    eventText(string);
+    $("#b").html("Flaunt axe (Coming soon, sorry!)");
+    $("#c").html("Offer axe").slideDown();
+    if (1 >= currentAxes ){
+      $("#c").prop("disabled", true);
+    }
+    else{
+      $("#c").prop("disabled", false);
+    }
+    $("#c").attr("onclick", "axeToMap()");
+  }
+  $("#d").html("offer Berry Juice").slideDown();
+  $("#d").attr("onclick", "getAnimalAdvice()");
+    if (1 > currentJuices){
+    $("#d").prop("disabled", true);
+    }
+  else{
+    $("#d").prop("disabled", false);
+    }
+}
+function axeToMap(){
+    currentAxes = currentAxes -1;
+    $("#b").slideUp();
+    $("#c").slideUp();
+    $("#d").slideUp();
+    $("#e").slideUp();
+  string = "Hey, you're not half bad, kid. Heres a map you can used to find me. Come visit any time you like."
   eventText(string);
-  $("#b").html("offer 10 wood");
-  $("#b").attr("onclick", "getAxeAdvice()");
-  $("#c").html("offer Berry Juice").slideDown();
-  $("#c").attr("onclick", "getAnimalAdvice()");
+  string2 = "<tr id = 'inventorymap'><td>Map</td><td id = 'mapCount'>"+"   x"+1+"</td>";
+  $("#inventoryContent").append(string2);
+
 }
 function getAxeAdvice(){
   if (currentWoods>=10){
     $("#b").slideUp();
     $("#c").slideUp();
+    $("#d").slideUp();
     string = "Ha! only 10 wood? Make an axe, then we'll talk.";
     eventText(string);
     $("#axeButton").prop("disabled", true);
     $("#axeButton").fadeIn();
+    guide = true;
   }
 }
 function getAnimalAdvice(){
@@ -202,7 +243,7 @@ function randomItem(){
    }
    else if (num <.50){
      currentWoods += 30;
-     gift = "a special stick. Its pointy! (Need to program the stick later.)";
+     gift = "a special stick. Its pointy! (Need to program the stick later. Here's some wood for your trouble.)";
     }
   else{
     currentMinerals += 20;
