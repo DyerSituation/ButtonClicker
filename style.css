@@ -27,12 +27,12 @@
 	display: none;
 }
 #lookAround{
-	font-size: 12px;
+	font-size: 15px;
 }
 #msgBox {
     border: 2px solid #a1a1a1;
     padding: 10px 40px;
-		margin-top: 5px;
+	margin-top: 5px;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(241,241,241,1)), color-stop(51%,rgba(225,225,225,1)), color-stop(100%,rgba(246,246,246,1)));
     width: 300px;
     border-radius: 25px;
@@ -62,4 +62,48 @@ td{
 	font-size: 18px;
 	text-align: center;
 	padding-bottom: 10px;
+}
+#b, #c, #d, #e, #f,{
+	padding: 0;
+
+button:active {
+    width: 70px;
+    height: 74px;
+}
+}
+button {
+	padding-top: 20px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #5e5e5e #888 #696969 #888;
+	font: 11px/16px 'Lucida Grande', Sans-serif;
+	color: #000;
+	text-decoration: none;
+	padding: 0 8px;
+	height: 50px;
+	background: #FCFCFC;
+	cursor: default;
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	-moz-border-radius: 18px;
+-webkit-border-radius: 18px;
+border-radius: 18px;
+background: -moz-linear-gradient(center top , #fcfcfc 0%, #f3f3f3 35%, #ededed 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcfcfc), color-stop(40%,#f3f3f3), color-stop(100%,#ededed));
+-moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 1px 0 0 rgba(0, 0, 0, 0.15), 0 -2px 3px 0px #FFF inset, 0 -10px 0 0 #ededed inset;
+-webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 1px 0 0 rgba(0, 0, 0, 0.15), 0 -2px 3px 0px #FFF inset, 0 -10px 0 0 #ededed inset;
+box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 1px 0 0 rgba(0, 0, 0, 0.15), 0 -2px 3px 0px #FFF inset, 0 -10px 0 0 #ededed inset;
+
+
+
+
+
+/*font-size: 15px;
+color: white;
+height: 50px;
+border-color: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(196,234,185,1)), color-stop(50%,rgba(197,237,192,1)), color-stop(51%,rgba(80,196,45,1)), color-stop(100%,rgba(19,191,0,1)));
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c9de96), color-stop(44%,#8ab66b), color-stop(100%,#398235));
+border-radius: 20%;*/
+/*border-bottom-color: #E5E5E5;*/
 }
