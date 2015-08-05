@@ -10,12 +10,13 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <p> ButtonClicker </p>
+    <p> Welcome to ButtonClicker! </p>
+<!--     <img src="images/Logo.png" alt="ButtonClicker" style="margin-left:100px;width:150px;height:55px;"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- User Location -->
     <p id="status">You are in <span id="location" title ="Your location">the forrest.</span></p>
     <!-- First Exploration -->
-    <div>Forest Experience:<span id ="exp">0</span></div>
+    <div >Forest Experience:<span id ="exp">0</span></div>
     <br>
     <div>
       <button id= "lookAround">Explore Forest</button>
@@ -33,10 +34,9 @@
       <button id= "stoneButton" type="button">Gather Stone</button>
     </div>
     <div id="items">
-      <button id= "juiceButton" type="button"><span title= "60 Berries">Craft BerryJuice</span></button>
-      <button id= "glueButton" type="button"><span title= "85 Berries">Craft BerryGlue</span></button>
-      <button id= "axeButton" type="button"><span title= "1 berry glue, 50 Stone, 100 Wood">Craft Axe</span></button>
-<!--       <button id= "basquetButton" type="button">Craft Basquet</button> -->
+      <div class="craft" title= "40 Berries"><button id= "juiceButton" type="button"><span>Craft BerryJuice</span></button></div>
+      <div class="craft" title= "60 Berries"><button id= "glueButton" type="button" ><span>Craft BerryGlue</span></button></div>
+      <div class="craft" title= "1 berry glue, 50 stone, 80 wood"><button id= "axeButton" type="button"><span >Craft Axe</span></button></div>
     </div>
     <!-- Content Script -->
     <script src="script.js"></script>
@@ -74,5 +74,6 @@
     </div>
 
     </div>
+    <div id="footer" style="color:grey;"><span id="foot"><a target="_blank" href="https://github.com/DyerSituation/ButtonClicker">github</a></span></div>
   </body>
 </html>

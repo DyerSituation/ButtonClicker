@@ -10,7 +10,7 @@ There are three types of events:
     Events that allow for crafting new material
 */
 var randitems = [currentBerries, currentWoods, currentMinerals];
-var maxSkip = 1;
+var maxSkip = 2;
 // STONE
 function StoneStoryEvent(exp){
   if(!stone){
@@ -59,7 +59,7 @@ function BefriendActionEvent(exp){
   string = "You befriended a random " + animal +"!";
   eventText(string);
   if (juiceToAnimal){
-    $("#b").html("offer berry juice").slideDown().prop("disabled", true);
+    $("#b").html("offer berry juice").fadeIn().prop("disabled", true); //all fade
     $("#b").attr("onclick","randomItem(animal)");
     if (currentJuices > 0){
         $("#b").prop("disabled", false)
@@ -70,17 +70,19 @@ function BefriendActionEvent(exp){
 
 function FishActionEvent(exp){
   string = 'You can see your reflection in the lake... and.. are those fish?!';
-  $("#b").slideDown().html("Go for swim");
+  $("#b").fadeIn().html("Go for swim (Coming Soon!)").attr("onclick", null); //all fade
   if (currentMinerals > 0){
-    $("#c").slideDown().html("Skip Stone").attr("onclick","stoneSkip()");
+    $("#c").fadeIn().html("Skip Stone").attr("onclick","stoneSkip()"); //all fade
     }
   eventText(string);
 }
 function stoneSkip(){
     if (currentMinerals > 0){
-        maxSkip = Math.sqrt(Math.ceil(maxSkip * (Math.random()+.7)));
+        maxSkip = Math.ceil(maxSkip * (Math.random()+.7));
         string = "Your stone went " + maxSkip + " jumps!";
         eventText(string);
+        currentMinerals --;
+        updateResources();
     }
 }
 function DangerActionEvent(exp){
@@ -113,7 +115,7 @@ function BerryJuiceEvent(exp){
 function oldWomanEvent(exp){
   string = "You come across an ancient hut, floating two feet above the ground.";
   eventText(string);
-  $("#b").html("Enter Hut").slideDown();
+  $("#b").html("Enter Hut").fadeIn(); //all fade
   $("#b").attr("onclick","goInside()");
 }
 function goInside(){
@@ -121,14 +123,15 @@ function goInside(){
   eventText(string);
   $("#b").html("offer 100 berries");
   $("#b").attr("onclick", "getAdvice()");
-  $("#c").html("offer 40 wood").slideDown();
+  $("#c").html("offer 40 wood").fadeIn(); //all fade
   $("#c").attr("onclick", "getStone()");
 }
 function getAdvice(){
   if (currentBerries>99){
     currentBerries = currentBerries - 100;
-    $("#b").slideUp();
-    $("#c").slideUp();
+    //all slides
+    $("#b").fadeOut(250);
+    $("#c").fadeOut(250);
     string = "KAKAKAKA berries!! c-crush them up, and I shall have ACKAKEEEK berry juice!";
     eventText(string);
     $("#juiceButton").prop("disabled", true);
@@ -138,8 +141,9 @@ function getAdvice(){
 function getStone(){
   if (currentWoods>39){
     currentWoods = currentWoods - 40;
-    $("#b").slideUp();
-    $("#c").slideUp();
+    //all slides
+    $("#b").fadeOut(250);
+    $("#c").fadeOut(250);
     string = "'AAYY LMAO! Wood?! YEEEEET!!' The witch turned your wood into stone.";
     eventText(string);
     $("#stoneTxt").fadeIn();
@@ -149,7 +153,7 @@ function getStone(){
 function forestGuruEvent(exp){
   string = "The fat hiker from the pokeon games is up ahead";
   eventText(string);
-  $("#b").html("chat with hiker").slideDown();
+  $("#b").html("chat with hiker").fadeIn(); //all fade
   $("#b").attr("onclick","goHike()");
 }
 function goHike(){
@@ -158,7 +162,7 @@ function goHike(){
     eventText(string);
     $("#b").html("offer 10 wood");
     $("#b").attr("onclick", "getAxeAdvice()");
-  if (11 > currentWoods){
+  if (9 > currentWoods){
     $("#b").prop("disabled", true);
     }
   else{
@@ -168,8 +172,8 @@ function goHike(){
   else{
     string = "'Hey there! Got my axe, kid?'";
     eventText(string);
-    $("#b").html("Flaunt axe (Coming soon, sorry!)");
-    $("#c").html("Offer axe").slideDown();
+    $("#b").html("Flaunt axe (Coming soon, sorry!)").attr("onclick", null);;
+    $("#c").html("Offer axe").fadeIn(); //all fade
     if (1 >= currentAxes ){
       $("#c").prop("disabled", true);
     }
@@ -178,7 +182,7 @@ function goHike(){
     }
     $("#c").attr("onclick", "axeToMap()");
   }
-  $("#d").html("offer Berry Juice").slideDown();
+  $("#d").html("offer Berry Juice").fadeIn(); //all fade
   $("#d").attr("onclick", "getAnimalAdvice()");
     if (1 > currentJuices){
     $("#d").prop("disabled", true);
@@ -189,10 +193,10 @@ function goHike(){
 }
 function axeToMap(){
     currentAxes = currentAxes -1;
-    $("#b").slideUp();
-    $("#c").slideUp();
-    $("#d").slideUp();
-    $("#e").slideUp();
+    $("#b").fadeOut(250);
+    $("#c").fadeOut(250);
+    $("#d").fadeOut(250);
+    $("#e").fadeOut(250);
   string = "Hey, you're not half bad, kid. Heres a map you can used to find me. Come visit any time you like."
   eventText(string);
   string2 = "<tr id = 'inventorymap'><td>Map</td><td id = 'mapCount'>"+"   x"+1+"</td>";
@@ -201,9 +205,9 @@ function axeToMap(){
 }
 function getAxeAdvice(){
   if (currentWoods>=10){
-    $("#b").slideUp();
-    $("#c").slideUp();
-    $("#d").slideUp();
+    $("#b").fadeOut(250);
+    $("#c").fadeOut(250);
+    $("#d").fadeOut(250);
     string = "Ha! only 10 wood? Make an axe, then we'll talk.";
     eventText(string);
     $("#axeButton").prop("disabled", true);
@@ -214,11 +218,23 @@ function getAxeAdvice(){
 function getAnimalAdvice(){
   if (currentJuices>0){
     currentJuices = currentJuices - 1;
-    $("#b").slideUp();
-    $("#c").slideUp();
+    $("#b").fadeOut(250);
+    $("#c").fadeOut(250);
     string = "Nice! You know, animals love this stuff.";
     eventText(string);
     juiceToAnimal = true;
+    currentJuices--;
+  if (currentJuices == 1) {
+    $("#inventoryJuice").remove();
+}
+else{
+  string = "<tr id = 'inventoryJuice'><td>Juice</td><td id = 'juicesCount'>"+"   x"+currentJuices+"</td>";
+  $("#inventoryContent").append(string);
+}
+  if (!(currentBerries >= 100)){
+    $("#juiceButton").prop("disabled", true);
+
+  }
   }
 }
 
@@ -251,6 +267,6 @@ function randomItem(){
    }
   test = "The " + animal + " gave you " + gift + "!";
   eventText(test);
-  $("#b").slideUp();
+  $("#b").fadeOut(250);
 }
 

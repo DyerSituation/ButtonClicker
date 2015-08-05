@@ -74,16 +74,17 @@ function startGame(){
 }
 
 function randomEvent(eventNumber){
-    $("#b").slideUp().prop("disabled", false);
-    $("#c").slideUp().prop("disabled", false);
-    $("#d").slideUp().prop("disabled", false);
-    $("#e").slideUp().prop("disabled", false);
-    $("#f").slideUp().prop("disabled", false);
-    $("#g").slideUp().prop("disabled", false);
+	//all slides
+    $("#b").fadeOut(250).prop("disabled", false);
+    $("#c").fadeOut(250).prop("disabled", false);
+    $("#d").fadeOut(250).prop("disabled", false);
+    $("#e").fadeOut(250).prop("disabled", false);
+    $("#f").fadeOut(250).prop("disabled", false);
+    $("#g").fadeOut(250).prop("disabled", false);
 	exp +=5;
 	console.log(exp);
 	$("#exp").html(exp);
-	if (exp == 20){
+	if (exp == 15){
 		EventsArray.push(HutTextEvent);
 		EventsArray.push(OwlTextEvent);
 		EventsArray.push(WoodResourceEvent);
@@ -117,7 +118,7 @@ function randomEvent(eventNumber){
 		EventsArray.push(forestGuruEvent);
 		EventsArray.push(StoneResourceEvent);
 	}
-	if (exp == 250){
+	if (exp == 150){
 		EventsArray.push(WoodResourceEvent);
 		EventsArray.push(StoneStoryEvent);
 		EventsArray.push(StoneStoryEvent);

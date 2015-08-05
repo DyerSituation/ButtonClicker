@@ -65,10 +65,10 @@ else{
 
 
 function axe(){
-  if (currentBerries >= 10 && currentMinerals >= 50 && currentWoods >= 100){
-    currentBerries = currentBerries - 10;
+  if (currentJuices >= 1 && currentMinerals >= 50 && currentWoods >= 80){
+    currentJuices = currentJuices - 1;
     currentMinerals = currentMinerals -50;
-    currentWoods = currentWoods - 100;
+    currentWoods = currentWoods - 80;
     currentAxes++;
     updateResources();
     $("#woodButton").fadeIn;
@@ -112,8 +112,8 @@ else{
 }
 
 function glue(){
-  if (currentBerries >= 75){
-  currentBerries = currentBerries - 75;
+  if (currentBerries >= 60){
+  currentBerries = currentBerries - 60;
   currentGlues++;
   updateResources();
   $("#inventory").fadeIn().css("display", "inline-block");
@@ -155,16 +155,19 @@ function increment(num){
       $("#juiceButton").prop("disabled", false);
     }
   //enable glue
-    if (currentBerries >= 75){
+    if (currentBerries >= 60){
       $("#glueButton").prop("disabled", false);
     }
   //enable axe
-    if (currentBerries >= 0 && currentMinerals >= 50 && currentWoods >= 100){
+    if (currentJuices >= 0 && currentMinerals >= 50 && currentWoods >= 80){
       $("#axeButton").prop("disabled", false);
     }
      if (currentAxes > 0){
       $("#axeButton").prop("disabled", false);
-      $("#woodButton").fadeIn();
+      $("#woodButton").prop("disabled", true);
+    }
+    else{
+      $("#woodButton").prop("disabled", false);
     }
 
 

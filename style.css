@@ -1,3 +1,51 @@
+
+a{
+	color: grey;
+}
+a:link{
+	text-decoration: none;
+}
+a:visited{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+a:active{
+	text-decoration: underline;
+}
+.craft{
+    display: inline;
+    position: relative;
+}
+
+.craft:hover:after{
+    background: #BCF5A9;
+    background: rgba(0,0,0,.2);
+    border-radius: 5px;
+    bottom: 26px;
+    color: #fff;
+    content: attr(title);
+    left: 20%;
+    padding: 5px 15px;
+    position: absolute;
+    z-index: 98;
+    white-space: nowrap;
+}
+
+.craft:hover:before{
+    border: solid;
+    border-color: #C7C7C7 transparent;
+    border-width: 6px 6px 0 6px;
+    bottom: 20px;
+    content: "";
+    left: 50%;
+    position: absolute;
+    z-index: 99;
+}
+#levelOne{
+	padding: 10px;
+}
 #resources{
 	border: 2px solid #a1a1a1;
 	width: 50px;
@@ -23,7 +71,7 @@
 	text-align: center;
 	display: inline-block;
     }
- #b, #c, #d, #e, #f, #inventory, #berryButton, #woodButton, #stoneButton, #lookAround, #msgBox, #status, #resources, #foodTxt, #woodTxt, #stoneTxt, #axesTxt, #workersTxt, #minerals, #axeButton, #juiceButton, #glueButton {
+ #b, #c, #d, #e, #f, #glueButton, #inventory, #berryButton, #woodButton, #stoneButton, #lookAround, #msgBox, #status, #resources, #foodTxt, #woodTxt, #stoneTxt, #axesTxt, #workersTxt, #minerals, #axeButton, #juiceButton {
 	display: none;
 }
 #lookAround{
@@ -63,15 +111,25 @@ td{
 	text-align: center;
 	padding-bottom: 10px;
 }
-#b, #c, #d, #e, #f,{
-	padding: 0;
 
-button:active {
-    width: 70px;
-    height: 74px;
+
+button:hover {
+   -webkit-transform: scale(1.02,1.02); /* Safari */
+    transform: scale(1.02,1.02);
+
 }
+button:active {
+    -webkit-transform: scale(1.02,1.02); /* Safari */
+    transform: scale(.95,.95);
+
+}
+button:disabled {
+    color: #C0C0C0;
+    transform:none;
 }
 button {
+	 -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
+    transition: width 2s, height 2s, transform .1s;
 	padding-top: 20px;
 	border-width: 1px;
 	border-style: solid;
@@ -94,7 +152,7 @@ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcfcf
 -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 1px 0 0 rgba(0, 0, 0, 0.15), 0 -2px 3px 0px #FFF inset, 0 -10px 0 0 #ededed inset;
 -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 1px 0 0 rgba(0, 0, 0, 0.15), 0 -2px 3px 0px #FFF inset, 0 -10px 0 0 #ededed inset;
 box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15), 0 1px 0 0 rgba(0, 0, 0, 0.15), 0 -2px 3px 0px #FFF inset, 0 -10px 0 0 #ededed inset;
-
+	
 
 
 
