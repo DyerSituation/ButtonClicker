@@ -1,79 +1,84 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-   <meta charset="utf-8">
+    <meta charset="utf-8">
     <title>
       Click!
-      <meta charset="utf-8">
     </title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <p> Welcome to ButtonClicker! </p>
-<!--     <img src="images/Logo.png" alt="ButtonClicker" style="margin-left:100px;width:150px;height:55px;"> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- User Location -->
-    <p id="status">You are in <span id="location" title ="Your location">the forrest.</span></p>
-    <!-- First Exploration -->
-    <div >Forest Experience:<span id ="exp">0</span></div>
-    <br>
-    <div>
-      <button id= "lookAround">Explore Forest</button>
-      <button id= "b"></button>
-      <button id= "c"></button>
-      <button id= "d"></button>
-      <button id= "e"></button>
-      <button id= "f"></button>
-    </div>
+    <div id="wrap">
 
-    <!-- Basic Resources -->
-    <div id="levelOne">
-      <button id= "berryButton" type="button">Pick Berries</button>
-      <button id= "woodButton" type="button">Harvest Wood</button>
-      <button id= "stoneButton" type="button">Gather Stone</button>
-    </div>
-    <div id="items">
-      <div class="craft" title= "40 Berries"><button id= "juiceButton" type="button"><span>Craft BerryJuice</span></button></div>
-      <div class="craft" title= "60 Berries"><button id= "glueButton" type="button" ><span>Craft BerryGlue</span></button></div>
-      <div class="craft" title= "1 berry glue, 50 stone, 80 wood"><button id= "axeButton" type="button"><span >Craft Axe</span></button></div>
-    </div>
-    <!-- Content Script -->
-    <script src="script.js"></script>
-<script src="events.js"></script>
-    <!-- Story Line -->
-    <script src="story.js"></script>
+      <p> Welcome to ButtonClicker! </p>
+  <!--     <img src="images/Logo.png" alt="ButtonClicker" style="margin-left:100px;width:150px;height:55px;"> -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <!-- User Location -->
+      <p id="status">You are in <span id="location" title ="Your location">the forrest.</span></p>
+      <!-- First Exploration -->
+      <div >Forest Experience:<span id ="exp">0</span></div>
+      <br>
+      <div id="mainButtons">
+        <button id= "lookAround">Explore Forest</button>
+        <button id= "b"></button>
+        <button id= "c"></button>
+        <button id= "d"></button>
+        <button id= "e"></button>
+        <button id= "f"></button>
+      </div>
 
-    <br>
-    <!-- Resource Display -->
-    <div id="resources">
-      <div id = "footTxt">Berries: <div id ="food">0</div></div>
-      <div id = "woodTxt">Wood: <div id ="wood">0</div></div>
-      <div id = "stoneTxt">Stone: <div id ="mineral">0/</div></div>
-      <div id = "axesTxt">Axes: <div id="axes">0</div></div>
-      <div id = "workersTxt">Workers: <div id="workers">0</div></div>
-    </div>
-    <!-- Inventory Display -->
-    <div id="inventory">
-      <div id="inventoryHead">Inventory
+      <!-- Basic Resources -->
+      <div class="txtCenter">
+        <div id="levelOne">
+          <button id= "berryButton" type="button">Pick Berries</button>
+          <button id= "woodButton" type="button">Harvest Wood</button>
+          <button id= "stoneButton" type="button">Gather Stone</button>
+        </div>
       </div>
-      <div id = "inventoryContent">
-        <table id = "inventoryTable">
-          <tbody>
+      <div class="txtCenter">
+        <div id="items" class="txtCenter">
+          <div class="craft" title= "40 Berries"><button id= "juiceButton" type="button"><span>Craft BerryJuice</span></button></div>
+          <div class="craft" title= "60 Berries"><button id= "glueButton" type="button" ><span>Craft BerryGlue</span></button></div>
+          <div class="craft" title= "1 berry glue, 50 stone, 80 wood"><button id= "axeButton" type="button"><span >Craft Axe</span></button></div>
+        </div>
+      </div>
+      <!-- Content Script -->
+      <script src="script.js"></script>
+      <script src="events.js"></script>
+      <!-- Story Line -->
+      <script src="story.js"></script>
 
-          </tbody>
-        </table>
+      <br>
+      <div id="resInv">
+      <!-- Resource Display -->
+      <div id="resources">
+        <div id = "footTxt">Berries: <div id ="food">0</div></div>
+        <div id = "woodTxt">Wood: <div id ="wood">0</div></div>
+        <div id = "stoneTxt">Stone: <div id ="mineral">0/</div></div>
+        <div id = "axesTxt">Axes: <div id="axes">0</div></div>
+        <div id = "workersTxt">Workers: <div id="workers">0</div></div>
       </div>
-    </div>
-    <div id="msgBox">
-      <div id="msgBoxHead">Message Box
-      </div>
-      <div id="msgBoxContent">
-        "Where - where am I?!"
-      </div>
-    </div>
+      <!-- Inventory Display -->
+      <div id="inventory">
+        <div id="inventoryHead">Inventory</div>
+        <div id = "inventoryContent">
+          <table id = "inventoryTable">
+            <tbody>
 
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-    <div id="footer" style="color:grey;"><span id="foot"><a target="_blank" href="https://github.com/DyerSituation/ButtonClicker">github</a></span></div>
+      <div id="msgBox">
+        <div id="msgBoxHead">Message Box</div>
+        <div id="msgBoxContent">
+          "Where - where am I?!"
+        </div>
+      </div>
+
+      <div id="footer" style="color:grey;"><span id="foot"><a target="_blank" href="https://github. com/DyerSituation/ButtonClicker">github</a></span>
+      </div>
+  </div>
   </body>
 </html>

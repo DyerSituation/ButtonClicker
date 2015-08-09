@@ -1,18 +1,17 @@
 // Erik Dyer
 
 //Initiate resources to 0
-var currentBerries = 000;
-var currentWoods = 0000;
-var currentMinerals = 000;
-var currentWorkers = 00;
+var currentBerries = 0;
+var currentWoods = 0;
+var currentMinerals = 0;
+var currentWorkers = 0;
 var currentAxes = 0;
-var currentJuices = 00;
-var currentGlues = 00;
+var currentJuices = 0;
+var currentGlues = 0;
 var limitBerries = 150;
 var limitWoods = 50;
 var limitMinerals = 75;
-
-
+var maxSkip = 2;
 //worker productivity interval
 var workerIncrement = 2000;
 
@@ -65,14 +64,14 @@ else{
 
 
 function axe(){
-  if (currentJuices >= 1 && currentMinerals >= 50 && currentWoods >= 80){
-    currentJuices = currentJuices - 1;
+  if (currentGlues >= 1 && currentMinerals >= 50 && currentWoods >= 80){
+    currentGlues = currentGlues - 1;
     currentMinerals = currentMinerals -50;
     currentWoods = currentWoods - 80;
     currentAxes++;
     updateResources();
-    $("#woodButton").fadeIn;
-    $("#woodTxt").fadeIn;
+    $("#woodButton").fadeIn();
+    $("#woodTxt").fadeIn();
     $("#inventory").fadeIn().css("display", "inline-block");
     if ($('#inventoryAxe').length > 0) {
       $("#axeCount").html("x"+currentAxes);
@@ -80,6 +79,12 @@ function axe(){
     else{
       string = "<tr id = 'inventoryAxe'><td>Axes</td><td id = 'axeCount'>"+"   x"+currentAxes+"</td>";
       $("#inventoryContent").append(string);
+    }
+    if (currentGlues == 0) {
+      $("#inventoryGlue").remove();
+    }
+    else{
+      $("#glueCount").html("x"+currentGlues);
     }
 }
   if (!(currentBerries >= 0 && currentMinerals >= 50 && currentWoods >= 100)){
@@ -105,7 +110,7 @@ else{
   string = "<tr id = 'inventoryJuice'><td>Juice</td><td id = 'juicesCount'>"+"   x"+currentJuices+"</td>";
   $("#inventoryContent").append(string);
 }
-  if (!(currentBerries >= 100)){
+  if (currentBerries < 100){
     $("#juiceButton").prop("disabled", true);
 
   }
@@ -125,7 +130,7 @@ function glue(){
     $("#inventoryContent").append(string);
 }
 }
-  if (!(currentBerries >= 75)){
+  if (currentBerries < 60){
     $("#glueButton").prop("disabled", true);
 
   }
@@ -141,10 +146,8 @@ function worker(){
   document.getElementById("currentWorkers").innerHTML = currentWorkers;
   }
 }
-
 var that = this;
-setInterval(function(){increment(that.currentWorkers)}, workerIncrement);
-
+setInterval(function(){increment(that.currentWorkers);}, workerIncrement);
 function increment(num){
   currentBerries = currentBerries + num;
   currentWoods = currentWoods + num;
@@ -159,11 +162,10 @@ function increment(num){
       $("#glueButton").prop("disabled", false);
     }
   //enable axe
-    if (currentJuices >= 0 && currentMinerals >= 50 && currentWoods >= 80){
+    if (currentGlues >= 0 && currentMinerals >= 50 && currentWoods >= 80){
       $("#axeButton").prop("disabled", false);
     }
-     if (currentAxes > 0){
-      $("#axeButton").prop("disabled", false);
+     if (currentAxes === 0){
       $("#woodButton").prop("disabled", true);
     }
     else{
@@ -172,4 +174,3 @@ function increment(num){
 
 
 }
-

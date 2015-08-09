@@ -1,4 +1,24 @@
+.txtCenter{
+	text-align: center;
+}
+#items{
+	display: inline-block;
+}
+#wrap{
+	margin: 0 auto;
+	width: 960px;
+	height: 100%;
+	position: relative;
+	border: solid black;
+	text-align: center;
+}
 
+#mainButtons{
+	display: block;
+	position: relative;
+	text-align: center;
+
+}
 a{
 	color: grey;
 }
@@ -44,7 +64,12 @@ a:active{
     z-index: 99;
 }
 #levelOne{
-	padding: 10px;
+	display: block;
+	margin-left: auto;
+}
+#resInv{
+	margin-left: -15%;
+	display: inline-block;
 }
 #resources{
 	border: 2px solid #a1a1a1;
@@ -55,7 +80,7 @@ a:active{
 	margin-bottom: 5px;
 	border-radius: 10px;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1)));
-	text-align: center;
+
 	display: inline-block;
     }
 
@@ -63,8 +88,8 @@ a:active{
 	border: 2px solid #a1a1a1;
 	width: 100px;
 	padding: 10px 20px;
-	margin-top: 10px;
-	margin-left: 20%;
+/*	margin-top: 10px;*/
+	margin-left: 40%;
 	margin-bottom: 5px;
 	border-radius: 10px;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1)));
@@ -84,8 +109,7 @@ a:active{
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(50%,rgba(241,241,241,1)), color-stop(51%,rgba(225,225,225,1)), color-stop(100%,rgba(246,246,246,1)));
     width: 300px;
     border-radius: 25px;
-	float:inherit;
-	overflow: auto;
+    margin-left: 30%;
 }
 td{
 	width: 10%;
@@ -120,7 +144,7 @@ button:hover {
 }
 button:active {
     -webkit-transform: scale(1.02,1.02); /* Safari */
-    transform: scale(.95,.95);
+    transform: scale(.98,.98);
 
 }
 button:disabled {
@@ -128,7 +152,7 @@ button:disabled {
     transform:none;
 }
 button {
-	 -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* Safari */
+	 -webkit-transition: width 2s, height 2s, 	transform 2s; /* Safari */
     transition: width 2s, height 2s, transform .1s;
 	padding-top: 20px;
 	border-width: 1px;

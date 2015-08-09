@@ -5,7 +5,7 @@ var exploreDelay = 1000;
 //used for switch statement
 var updateNumber = 0;
 
-var exp = 0
+var exp = 0;
 
 var  EventsArray = [PlantActiveEvent, TracksActiveEvent, BefriendActionEvent];
 
@@ -17,16 +17,16 @@ var guide = false;
 var juiceToAnimal = false;
 
 
-$( window ).load(function() { show(); })
+$( window ).load(function() { show(); });
 //first message.
 function show(){
 	$('#msgBox').fadeIn(2000);
-	setTimeout(function(){ intros();}, 3000)
+	setTimeout(function(){ intros();}, 3000);
 }
 //Game introduction!
 function intros(){
 	$("#lookAround").fadeIn(500);
-	$("#lookAround").click(function(){ updates();})
+	$("#lookAround").click(function(){ updates();});
 }
 //Introduction sequence of events
 function updates(){
@@ -47,7 +47,7 @@ function updates(){
 				$("#lookAround").prop("disabled", true);
 				$("#lookAround").html("Keep Exploring");
 				$("#msgBoxContent").html("Just kidding, these are actually pretty good!");
-				setTimeout(function(){ startGame();}, 2000)
+				setTimeout(function(){ startGame();}, 2000);
         break;
 			}
 }
@@ -118,7 +118,7 @@ function randomEvent(eventNumber){
 		EventsArray.push(forestGuruEvent);
 		EventsArray.push(StoneResourceEvent);
 	}
-	if (exp == 150){
+	if (exp == 180){
 		EventsArray.push(WoodResourceEvent);
 		EventsArray.push(StoneStoryEvent);
 		EventsArray.push(StoneStoryEvent);
